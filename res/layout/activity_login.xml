@@ -1,0 +1,160 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <ImageView
+        android:layout_width="217dp"
+        android:layout_height="56dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/login_logo"
+        android:src="@drawable/logo" />
+
+    <RelativeLayout
+        android:layout_width="292dp"
+        android:layout_height="194dp"
+        android:background="@drawable/white_frame"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/login_frame"
+        android:layout_below="@+id/login_logo">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:id="@+id/login_user"
+                android:text="@string/login_user" />
+            <EditText
+                android:id="@+id/login_user_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/login_user"
+                android:hint="@string/login_user_hint" />
+
+			<TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/login_user"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/login_line_1"
+                android:background="@color/gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_line_1"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/login_passwd"
+                android:text="@string/login_passwd" />
+            <EditText
+                android:id="@+id/login_passwd_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/login_passwd_hint"
+                android:textSize="14sp"
+                android:layout_below="@id/login_line_1"
+                android:layout_toRightOf="@id/login_passwd"
+                android:inputType="textWebPassword" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/login_passwd"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/login_line_2"
+                android:background="@color/gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_line_2"
+                android:id="@+id/login_check"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/login_check" />
+            <EditText
+                android:id="@+id/login_check_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/login_check"
+                android:textSize="14sp"
+                android:layout_below="@id/login_line_2"
+                android:hint="@string/login_check_hint" />
+            <ImageView
+                android:id="@+id/login_check_img"
+                android:layout_width="45dp"
+                android:layout_toRightOf="@id/login_check_edit"
+                android:layout_below="@id/login_line_2"
+                android:layout_height="45dp" />
+    </RelativeLayout>
+    <Button
+        android:background="@drawable/blue_btn"
+        android:text="@string/login_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/login_frame"
+        android:layout_marginTop="10dp"
+        android:layout_height="46dp"
+        android:layout_width="280dp"
+        android:id="@+id/login_btn"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        />
+	<TextView
+	     android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/login_btn"
+         android:layout_alignLeft="@id/login_frame"
+         android:textColor="@color/white"
+         android:autoLink="all"
+         android:text="@string/login_sign"
+         android:id="@+id/login_sign"
+	    />
+	<TextView
+	     android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/login_btn"
+         android:layout_alignRight="@id/login_frame"
+         android:textColor="@color/white"
+         android:text="@string/login_auto"
+	    />
+	<LinearLayout
+	    android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/login_sign"
+         android:layout_alignLeft="@id/login_sign"
+         android:layout_alignRight="@id/login_frame"
+         android:orientation="vertical"
+	    >
+	    <TextView
+	     android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textColor="@color/white"
+         android:text="@string/login_text_1"
+	    />
+	    <TextView
+	     android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textColor="@color/white"
+         android:text="@string/login_text_2"
+	    />
+	    <TextView
+	     android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textColor="@color/white"
+         android:text="@string/login_text_3"
+	    />
+	</LinearLayout>
+</RelativeLayout>
+</ScrollView>
