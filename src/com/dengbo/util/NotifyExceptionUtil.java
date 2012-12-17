@@ -9,9 +9,9 @@ public class NotifyExceptionUtil {
 		if (msg.equals("400")) {
 			Toast.makeText(context, "Bad Request", Toast.LENGTH_LONG);
 		} else if (msg.equals("401")) {
-
+			Toast.makeText(context, "Unauthorized", Toast.LENGTH_LONG);
 		} else if (msg.equals("403")) {
-
+			Toast.makeText(context, "Forbidden", Toast.LENGTH_LONG);
 		} else if (msg.equals("404")) {
 			Toast.makeText(context, "Not Found", Toast.LENGTH_LONG);
 		} else if (msg.equals("500")) {
