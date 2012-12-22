@@ -1,5 +1,6 @@
 package com.dengbo.model;
 
+
 public class ReqLoginToken extends ReqNetDate{
 
 	@Override

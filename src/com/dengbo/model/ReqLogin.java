@@ -11,7 +11,7 @@ public class ReqLogin extends ReqNetDate{
 		// TODO Auto-generated method stub
 		super.initHeadParam();
 		headParamHashMap.put("Accept","text/html, application/xhtml+xml, */*");
-		headParamHashMap.put("Content-Type", "application/x-www-form-urlencoded");
+		headParamHashMap.put("Referer","https://dynamic.12306.cn/otsweb/loginAction.do?method=init");
 	}
 
 	@Override
@@ -22,16 +22,16 @@ public class ReqLogin extends ReqNetDate{
 		 * &nameErrorFocus=&user.password=userpasseord&passwordErrorFocus=
 		 * &randCode=5EH8&randErrorFocus=
 		 */
+		super.initParam(mBundle);
 		String[] dataStrings = mBundle.getStringArray(StringPoolUtil.LOGIN);
-		paramHashMap.put(StringPoolUtil.LOGIN_RAND, dataStrings[3]);
-		paramHashMap.put(StringPoolUtil.LOGIN_REFUND, "N");
-		paramHashMap.put(StringPoolUtil.LOGIN_FLAG, "Y");
-		paramHashMap.put(StringPoolUtil.LOGIN_USER, dataStrings[0]);
-		paramHashMap.put(StringPoolUtil.LOGIN_NAME_F, "");
-		paramHashMap.put(StringPoolUtil.LOGIN_PW, dataStrings[1]);
-		paramHashMap.put(StringPoolUtil.LOGIN_PW_F, "");
-		paramHashMap.put(StringPoolUtil.LOGIN_CHECK, dataStrings[2]);
-		paramHashMap.put(StringPoolUtil.LOGIN_CHECK_F, "");
+		param.append("loginRand=").append(dataStrings[3])
+		.append("&refundLogin=N&refundFlag=Y&loginUser.user_name=")
+		.append(dataStrings[0])
+		.append("&nameErrorFocus=&user.password=")
+		.append(dataStrings[1])
+		.append("&passwordErrorFocus=&randCode=")
+		.append(dataStrings[2])
+		.append("&randErrorFocus=focus");
 	}
 
 }

@@ -2,13 +2,15 @@ package com.dengbo.model;
 
 import java.util.HashMap;
 
+import com.dengbo.util.CommonUtil;
+
 import android.os.Bundle;
 
 public class ReqNetDate {
 	protected String urlString;
 	protected String protocolString;
 	protected HashMap<String, String> headParamHashMap;
-	protected HashMap<String,String> paramHashMap;
+	protected StringBuilder param;
 	protected String methodString;
 	protected String actionString;
 	public ReqNetDate()
@@ -17,8 +19,8 @@ public class ReqNetDate {
 		methodString = "";
 		protocolString = "";
 		actionString = "";
+		param = new StringBuilder("");
 		headParamHashMap = new HashMap<String, String>();
-		paramHashMap = new HashMap<String, String>();
 	}
 	public void setAction(String action) {
 		actionString = action;
@@ -48,10 +50,17 @@ public class ReqNetDate {
 		return headParamHashMap;
 	}
 	public void initHeadParam() {
-
+		headParamHashMap.put("Accept-Language", "zh-CN");
+		headParamHashMap.put("User-Agent", " Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)");
+		headParamHashMap.put("Content-Type", "application/x-www-form-urlencoded");
+		headParamHashMap.put("Host","dynamic.12306.cn");
+		headParamHashMap.put("Connection", " Keep-Alive");
+		headParamHashMap.put("Cache-Control", " no-cache");
+		headParamHashMap.put("Cookie", CommonUtil.getCookie());
 	}
-	public HashMap<String, String> getParam() {
-		return paramHashMap;
+	public String getParam()
+	{
+		return param.toString();
 	}
 	public void initParam(Bundle mBundle) {
 

@@ -5,13 +5,22 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 
 import android.util.Log;
 
 public class CommonUtil {
 	static String LOG = "CommonUtil";
+ 	/*
+	 * 保存cookie
+	 */
+	public static String COOKIE = "";
 
+	public static String getCookie()
+	{
+		while(COOKIE.equals(""))
+			Log.v(LOG, COOKIE);
+		return COOKIE;
+	}
 	public static byte[] inputStreamToByteArray(InputStream inputStream) {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		try {

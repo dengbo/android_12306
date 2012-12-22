@@ -20,8 +20,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.dengbo.control.InitCookieService;
 import com.dengbo.control.RouterService;
 import com.dengbo.util.NotifyExceptionUtil;
 import com.dengbo.util.StringPoolUtil;
@@ -33,9 +33,11 @@ public class LoginActivity extends Activity {
 	private Button loginButton;
 	private ImageView checkImageView;
 
-	// 启动service的intent
+	// 启动主service的intent
 	private Intent mIntent;
 
+	// 启动获取cookie的service
+	private Intent cookieIntent;
 	private Recieve_login_data mLogin_data;
 
 	@Override
@@ -55,6 +57,7 @@ public class LoginActivity extends Activity {
 		filter.addAction(StringPoolUtil.F5_CHECK_IMG);
 		filter.addAction(StringPoolUtil.SEND_LOGIN_AUTH);
 		filter.addAction(StringPoolUtil.SEND_LOGIN);
+		filter.addAction(StringPoolUtil.GET_COOKIE);
 		mLogin_data = new Recieve_login_data();
 		registerReceiver(mLogin_data, filter);
 	}
@@ -73,9 +76,65 @@ public class LoginActivity extends Activity {
 		loginButton.setOnClickListener(loginClickListener);
 		checkImageView.setOnClickListener(refreshClickListener);
 
-		// 获取验证码
-		getCheckImg();
+		while (true) {
+			if (isOpenNetwork() == true) {
+				cookieIntent = new Intent(LoginActivity.this,
+						InitCookieService.class);
+				cookieIntent.setAction(StringPoolUtil.GET_COOKIE);
+				startService(cookieIntent);
+				// 获取验证码
+				mIntent = new Intent(LoginActivity.this, RouterService.class);
+				mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
+				startService(mIntent);
+				break;
+			} else {
+				Resources resources = getResources();
+				AlertDialog.Builder builder = new AlertDialog.Builder(
+						LoginActivity.this);
+				builder.setTitle(
+						resources.getString(R.string.login_network_title))
+						.setMessage(
+								resources.getString(R.string.login_network_msg));
 
+				builder.setPositiveButton(resources.getString(R.string.ok),
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								Intent intent = null;
+
+								try {
+									String sdkVersion = android.os.Build.VERSION.SDK;
+									if (Integer.valueOf(sdkVersion) > 10) {
+										intent = new Intent(
+												android.provider.Settings.ACTION_SETTINGS);
+									} else {
+										intent = new Intent();
+										ComponentName comp = new ComponentName(
+												"com.android.settings",
+												"com.android.settings.Settings");
+										intent.setComponent(comp);
+										intent.setAction("android.intent.action.VIEW");
+									}
+									LoginActivity.this.startActivity(intent);
+								} catch (Exception e) {
+									Log.v(LOG,
+											"open network settings failed, please check...");
+									e.printStackTrace();
+								}
+							}
+						})
+						.setNegativeButton(resources.getString(R.string.no),
+								new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialog,
+											int which) {
+										dialog.cancel();
+										finish();
+									}
+								}).show();
+			}
+		}
 	}
 
 	/**
@@ -90,61 +149,6 @@ public class LoginActivity extends Activity {
 		}
 
 		return false;
-	}
-
-	/*
-	 * 如果有网络则发送验证码请求，没有则请求用户设置网络
-	 */
-	private void getCheckImg() {
-		if (isOpenNetwork() == true) {
-			// 获取验证码
-			mIntent = new Intent(LoginActivity.this, RouterService.class);
-			mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
-			startService(mIntent);
-		} else {
-			Resources resources = getResources();
-			AlertDialog.Builder builder = new AlertDialog.Builder(
-					LoginActivity.this);
-			builder.setTitle(resources.getString(R.string.login_network_title))
-					.setMessage(resources.getString(R.string.login_network_msg));
-
-			builder.setPositiveButton(resources.getString(R.string.ok),
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							Intent intent = null;
-
-							try {
-								String sdkVersion = android.os.Build.VERSION.SDK;
-								if (Integer.valueOf(sdkVersion) > 10) {
-									intent = new Intent(
-											android.provider.Settings.ACTION_SETTINGS);
-								} else {
-									intent = new Intent();
-									ComponentName comp = new ComponentName(
-											"com.android.settings",
-											"com.android.settings.Settings");
-									intent.setComponent(comp);
-									intent.setAction("android.intent.action.VIEW");
-								}
-								LoginActivity.this.startActivity(intent);
-							} catch (Exception e) {
-								Log.v(LOG,
-										"open network settings failed, please check...");
-								e.printStackTrace();
-							}
-						}
-					})
-					.setNegativeButton(resources.getString(R.string.no),
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
-										int which) {
-									dialog.cancel();
-									finish();
-								}
-							}).show();
-		}
 	}
 
 	// 点击刷新验证码
@@ -163,12 +167,11 @@ public class LoginActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Log.v(LOG,"login");
+			Log.v(LOG, "login");
 			mIntent.setAction(StringPoolUtil.SEND_LOGIN_AUTH);
 			startService(mIntent);
 		}
 	};
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -194,16 +197,20 @@ public class LoginActivity extends Activity {
 							data.length);
 					checkImageView.setImageBitmap(mBitmap);
 				} else if (action.equalsIgnoreCase(StringPoolUtil.F5_CHECK_IMG)) {// 刷新验证码
-					byte[] data = mBundle.getByteArray(StringPoolUtil.RESP_CHECK);
-					Bitmap mBitmap = BitmapFactory.decodeByteArray(data, 0,data.length);
+					byte[] data = mBundle
+							.getByteArray(StringPoolUtil.RESP_CHECK);
+					Bitmap mBitmap = BitmapFactory.decodeByteArray(data, 0,
+							data.length);
 					checkImageView.setImageBitmap(mBitmap);
-				} else if (action.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN_AUTH)) {// 处理获取到autho后，发送请求登录信息
+				} else if (action
+						.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN_AUTH)) {// 处理获取到autho后，发送请求登录信息
 					mIntent.setAction(StringPoolUtil.SEND_LOGIN);
 					String[] dataStrings = new String[4];
-					dataStrings[0] = userEditText.getText().toString();
-					dataStrings[1] = passwdEditText.getText().toString();
+					dataStrings[0] = "dengbodb@sina.com";// userEditText.getText().toString();
+					dataStrings[1] = "03170822l"; // passwdEditText.getText().toString();
 					dataStrings[2] = checkEditText.getText().toString();
-					dataStrings[3] = mBundle.getString(StringPoolUtil.LOGIN_RAND);
+					dataStrings[3] = mBundle
+							.getString(StringPoolUtil.LOGIN_RAND);
 					Bundle mBundles = new Bundle();
 					mBundles.putStringArray(StringPoolUtil.LOGIN, dataStrings);
 					mIntent.putExtras(mBundles);
@@ -234,6 +241,9 @@ public class LoginActivity extends Activity {
 						LoginActivity.this.startActivity(startIntent);
 						LoginActivity.this.finish();
 					}
+				} else if (action.equals(StringPoolUtil.GET_COOKIE)) {
+					Log.v(LOG, "get the cookie");
+					stopService(cookieIntent);
 				}
 			}
 
