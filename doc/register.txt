@@ -1,0 +1,262 @@
+1  用户登录
+
+
+
+
+POST /otsweb/loginAction.do?method=login HTTP/1.1
+Accept: text/html, application/xhtml+xml, */*
+Referer: https://dynamic.12306.cn/otsweb/loginAction.do?method=init
+Accept-Language: zh-CN
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: dynamic.12306.cn
+Content-Length: 156
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: JSESSIONID=95B52130B2A1FF446010770C96C8BD8D; BIGipServerotsweb=2396258570.48160.0000
+
+
+loginRand=698&refundLogin=N&refundFlag=Y&loginUser.user_name=asdfsd&nameErrorFocus=&user.password=asdfsadf&passwordErrorFocus=&randCode=1234&randErrorFocus=
+
+
+
+loginRand=720&refundLogin=N&refundFlag=Y&loginUser.user_name=iphonetest&nameErrorFocus=&user.password=iphone123&passwordErrorFocus=&randCode=4abx&randErrorFocus=focus
+
+
+
+(loginRand 来自下面的loginAysnSuggest请求)
+
+
+
+
+
+
+POST /otsweb/loginAction.do?method=loginAysnSuggest HTTP/1.1
+x-requested-with: XMLHttpRequest
+Accept-Language: zh-cn
+Referer: https://dynamic.12306.cn/otsweb/loginAction.do?method=init#
+Accept: application/json, text/javascript, */*
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Host: dynamic.12306.cn
+Content-Length: 0
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: JSESSIONID=7F93200FCE9788CE8C6BDBE367B15CF7; BIGipServerotsweb=2748580106.36895.0000
+
+POST /otsweb/loginAction.do?method=loginAysnSuggest HTTP/1.1
+x-requested-with: XMLHttpRequest
+Accept-Language: zh-cn
+Referer: https://dynamic.12306.cn/otsweb/loginAction.do?method=init
+Accept: application/json, text/javascript, */*
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Host: dynamic.12306.cn
+Content-Length: 0
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: JSESSIONID=CC6B4E505456091A3919E9B4BFF4E7D5; BIGipServerotsweb=2748580106.36895.0000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2 用户注册
+
+
+
+
+
+
+                           Header 
+/*****************************************************/
+(Request-Line)  POST /otsweb/registAction.do?method=regist HTTP/1.1
+Host	dynamic.12306.cn
+User-Agent	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:14.0) Gecko/20100101 Firefox/14.0.1
+Accept	text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language	zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3
+Accept-Encoding	gzip, deflate
+Connection	keep-alive
+Referer	https://dynamic.12306.cn/otsweb/registAction.do?method=regist
+Cookie	JSESSIONID=5C5617759E0A915125AECFDBED14C8AC; BIGipServerotsweb=2413035786.36895.0000
+Content-Type	application/x-www-form-urlencoded
+Content-Length	1054
+/*****************************************************/
+
+                           Cookies 
+/*****************************************************/
+JSESSIONID	5C5617759E0A915125AECFDBED14C8AC	/otsweb	dynamic.12306.cn	End Of Session
+BIGipServerotsweb	2413035786.36895.0000	/	dynamic.12306.cn	End Of Session
+/*****************************************************/
+
+                          Cookies  Received
+/*****************************************************/
+JSESSIONID	581AAD34C66F9E2F64FEE137EB062606	/otsweb	dynamic.12306.cn	End Of Session
+/*****************************************************/
+
+
+
+                          POSTDATA
+/*****************************************************/
+org.apache.struts.taglib.html.TOKEN	f155e7d189c6b669b44c4c26715da423
+loginUser.user_name	iostest
+user.password	ios123
+confirmPassWord	ios123
+user.IVR_passwd	123456
+confirmIvr_pwd	123456
+user.pwd_question	
+otherpasswordQuestion	
+user.pwd_answer	
+randCode	nehy
+loginUser.name	å¼ ä¸
+user.sex_code	M
+user.born_date	1980-11-11
+user.country_code	CN                     /*  见CountryCode*/
+loginUser.id_type_code	1
+loginUser.id_no	110101198011111114
+user.mobile_no	11111111111
+user.phone_no	
+user.email	sdfsaf@11.com
+user.address	
+user.postalcode	
+passenger_type	1
+studentInfo.province_code	11
+studentInfo.school_code	
+studentInfo.school_name	ç®ç /æ±å­
+studentInfo.department	
+studentInfo.school_class	
+studentInfo.student_no	
+studentInfo.school_system	4
+studentInfo.enter_year	2002
+studentInfo.preference_card_no	
+studentInfo.preference_from_station_name	ç®ç /æ±å­
+studentInfo.preference_from_station_code	
+studentInfo.preference_to_station_name	ç®ç /æ±å­
+studentInfo.preference_to_station_code	
+/*****************************************************/
+
+
+关于
+<input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="322aeb543cac9ceb3cbcbff59a77a31c">
+
+
+
+
+/**********************************************************************************************************/
+/******************************************Times 2******************************************************/
+/**********************************************************************************************************/
+
+                           Header 
+/*****************************************************/
+
+(Request-Line)	POST /otsweb/registAction.do?method=regist HTTP/1.1
+Host	dynamic.12306.cn
+User-Agent	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:14.0) Gecko/20100101 Firefox/14.0.1
+Accept	text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language	zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3
+Accept-Encoding	gzip, deflate
+Connection	keep-alive
+Referer	https://dynamic.12306.cn/otsweb/registAction.do?method=init
+Cookie	JSESSIONID=5C5617759E0A915125AECFDBED14C8AC; BIGipServerotsweb=2413035786.36895.0000
+Content-Type	application/x-www-form-urlencoded
+Content-Length	1054
+/*****************************************************/
+
+
+
+                           Header 
+/*****************************************************/
+
+JSESSIONID	5C5617759E0A915125AECFDBED14C8AC	/otsweb	dynamic.12306.cn	End Of Session
+BIGipServerotsweb	2413035786.36895.0000	/	dynamic.12306.cn	End Of Session
+/*****************************************************/
+
+
+                           POSTDATA 
+/*****************************************************/
+org.apache.struts.taglib.html.TOKEN	0d112afd41ef50b50244f0b22284a381
+loginUser.user_name	iostest
+user.password	ios123
+confirmPassWord	ios123
+user.IVR_passwd	123456
+confirmIvr_pwd	123456
+user.pwd_question	
+otherpasswordQuestion	
+user.pwd_answer	
+randCode	HNKB
+loginUser.name	å¼ ä¸
+user.sex_code	M
+user.born_date	1970-01-01
+user.country_code	CN
+loginUser.id_type_code	1
+loginUser.id_no	110101198011111114
+user.mobile_no	11111111111
+user.phone_no	
+user.email	sdfsaf@11.com
+user.address	
+user.postalcode	
+passenger_type	1
+studentInfo.province_code	11
+studentInfo.school_code	
+studentInfo.school_name	ç®ç /æ±å­
+studentInfo.department	
+studentInfo.school_class	
+studentInfo.student_no	
+studentInfo.school_system	4
+studentInfo.enter_year	2002
+studentInfo.preference_card_no	
+studentInfo.preference_from_station_name	ç®ç /æ±å­
+studentInfo.preference_from_station_code	
+studentInfo.preference_to_station_name	ç®ç /æ±å­
+studentInfo.preference_to_station_code	
+
+
+/*****************************************************/
+
+
+
+3  注册时验证用户名
+
+(Request-Line)	POST /otsweb/registAction.do?method=ansycheckUserName HTTP/1.1
+Host	dynamic.12306.cn
+User-Agent	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:14.0) Gecko/20100101 Firefox/14.0.1
+Accept	application/json, text/javascript, */*
+Accept-Language	zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3
+Accept-Encoding	gzip, deflate
+Connection	keep-alive
+Content-Type	application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-With	XMLHttpRequest
+Referer	https://dynamic.12306.cn/otsweb/registAction.do?method=init
+Content-Length	30
+Cookie	JSESSIONID=581AAD34C66F9E2F64FEE137EB062606; BIGipServerotsweb=2413035786.36895.0000
+Pragma	no-cache
+Cache-Control	no-cache
+
+返回值  true/false
+
+
+4 注册时的验证码
+
+(Request-Line)	GET /otsweb/passCodeAction.do?rand=rrand&0.40084436804708234 HTTP/1.1
+Host	dynamic.12306.cn
+User-Agent	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:14.0) Gecko/20100101 Firefox/14.0.1
+Accept	image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language	zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3
+Accept-Encoding	gzip, deflate
+Connection	keep-alive
+Referer	https://dynamic.12306.cn/otsweb/registAction.do?method=init
+Cookie	JSESSIONID=581AAD34C66F9E2F64FEE137EB062606; BIGipServerotsweb=2413035786.36895.0000
