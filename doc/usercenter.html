@@ -1,0 +1,621 @@
+2012-10-10 09:45:26.758 TicketsHunter[6669:707] 
+
+==================================ResponeString==================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=7" />
+        
+        <meta name="Robots"   content="none"/>
+        
+        <meta http-equiv="Expires" content="0"/>
+        
+        <meta http-equiv="Cache-Control"  content="no-cache"/> 
+        
+        <meta http-equiv="pragma"  content="no-cache"/> 
+        
+        <title>Á≥ªÁªüÊ∂àÊÅØ</title>
+        
+        
+        
+        <link  href="/otsweb/css/style.css" rel="stylesheet"  type="text/css"/>
+        
+        <link  href="/otsweb/css/newsty.css" rel="stylesheet"  type="text/css"/>
+        
+        <link  href="/otsweb/css/contact.css" rel="stylesheet"  type="text/css"/>
+        
+        <link href="/otsweb/css/validation.css" rel="stylesheet" type="text/css" />
+        
+        <link rel="stylesheet" type="text/css" href="/otsweb/css/easyui.css"/>
+        
+        <link rel="stylesheet" type="text/css" href="/otsweb/css/suggest.css"/>
+        
+        <link href="/otsweb/css/cupertino/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+        
+        <link href="/otsweb/css/ots_common.css" rel="stylesheet" type="text/css" />
+        
+        <link rel="shortcut icon" href="http://www.12306.cn/mormhweb/images/favicon.ico"/>
+        
+        <script type="text/javascript" src="/otsweb/js/common/iepngfix_tilebg.js?version=4.6"></script>
+        
+        <script src="/otsweb/js/common/jquery-1.4.2.min.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/autoHeight.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/jquery.bgiframe.min.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/jquery.easyui.min.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/jquery.form.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/datepicker/WdatePicker.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/j.suggest.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/school_display1.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/school_suggest1.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/city_name_suggest.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/trainCodeSuggest.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/date.js?version=4.6" type="text/javascript"></script>
+        
+        <script src="/otsweb/js/common/sidetag.js?version=4.6" type="text/javascript"></script>
+        
+        
+        
+        
+        
+        <script>
+            
+            $(document).ready(function(){
+                              
+                              if(parent.notLogin==undefined) {
+                              
+                              parent.location='/otsweb' + '/main.jsp';
+                              
+                              return;
+                              
+                              }
+                              
+                              var isHide = "";
+                              
+                              if (isHide == "true") {
+                              
+                              if(parent.hideMenu){
+                              
+                              //parent.hideMenu();
+                              
+                              }
+                              
+                              } else {
+                              
+                              if(parent.showMenu){
+                              
+                              parent.showMenu();
+                              
+                              }
+                              
+                              }
+                              
+                              var clicktitle = 'ÊàëÁöÑ12306';
+                              
+                              if(parent.clickMenu&&clicktitle!==''){
+                              
+                              parent.clickMenu('ÊàëÁöÑ12306');
+                              
+                              }
+                              
+                              
+                              
+                              
+                              
+                              var isLogin= true
+                              
+                              var u_name = 'ÁÅ´ËΩ¶Á•®';
+                              
+                              if (isLogin) {
+                              
+                              parent.hasLogin(u_name);
+                              
+                              }else{
+                              
+                              parent.notLogin();
+                              
+                              }
+                              
+                              });
+            
+            </script>
+        
+    </head>
+    
+    <body>
+        
+        
+        
+        
+        
+        <script type="text/javascript">
+            
+            var unPayOrderCount='0';
+            
+            var hello = 'ÁÅ´ËΩ¶Á•®ÂÖàÁîü ÔºåÊ¨¢ËøéÊÇ®ÔºÅ';
+            
+            var isActive='Y';
+            
+            var to_12306 = 'to_12306';
+            
+            var ctx = '/otsweb';
+            
+            $(document).ready(function(){ 
+                              
+                              if(to_12306=="to_member_12306"){
+                              
+                              var levelCurrentCode = '';
+                              
+                              $("#explain").attr("style", "left:"+hello.length*17+"px;");
+                              
+                              $("#grade_id").attr("src", ctx + "/css/img/grade0"+levelCurrentCode+".png");
+                              
+                              $(".explain").hover(function(){
+                                                  
+                                                  $(".explain span").toggleClass("btnhover");
+                                                  
+                                                  $(".explain .tips").toggle();
+                                                  
+                                                  });
+                              
+                              var is_member = '';
+                              
+                              //if("member"!=is_member)
+                              
+                              //alert(is_member);
+                              
+                              }
+                              
+                              
+                              
+                              if(unPayOrderCount==0){
+                              
+                              //alert(unPayOrderCount);
+                              
+                              //$("#unPayOrderCount").hide();
+                              
+                              $("#bookTicket").css({display:"block"});
+                              
+                              $("#unPayOrderCount").css({display:"none"});
+                              
+                              } else {
+                              
+                              $("#bookTicket").css({display:"none"});
+                              
+                              $("#unPayOrderCount").css({display:"block"});
+                              
+                              }
+                              
+                              if(isActive=='N' || isActive=='n'){
+                              
+                              $("#activeEamil").css({display:"block"});
+                              
+                              $("#bookTicket").css({display:"none"});
+                              
+                              }
+                              
+                              });
+            
+            
+            
+            function agreeRegist(){
+                
+                location.href='/otsweb/sysuser/userCenterAction.do?method=checkIsOrNotMember';
+                
+            }
+            
+            
+            
+            </script>
+        
+        <div class="conWrap">
+            
+            <div class="text1">
+                
+                <div class="containerWrap_left">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <div class="left_up">
+                        
+                        <img style="margin-left: 10px; margin-top: 6px;"
+                        
+                        src="/otsweb/images/left_upz.png" />
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                    <div class="left_bao">
+                        
+                        <div class="left_m">
+                            
+                            ÁÅ´ËΩ¶Á•®
+                            
+                            
+                            
+                        </div>
+                        
+                        <div class="left_down_z" id="left_down_z">
+                            
+                            <table width="100%" cellspacing="0" cellpadding="0" height="100%">
+                                
+                                <tr>
+                                    
+                                    <td class="left_12306"><img src="/otsweb/images/left_xiao.jpg" />ÊàëÁöÑËÆ¢Âçï</td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    
+                                    <td class="text3"><a
+                                        
+                                        href="/otsweb/order/myOrderAction.do?method=queryMyOrderNotComplete&leftmenu=Y">Êú™ÂÆåÊàêËÆ¢Âçï</a>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    
+                                    <td class="text3"><a
+                                        
+                                        href="/otsweb/order/myOrderAction.do?method=init&showMessage=Y">ËÆ¢ÂçïÊü•ËØ¢</a>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    
+                                    <td class="text3"><a href="/otsweb/reservation/queryReservationAction.do?method=initReservation">È¢ÑÁ∫¶Êü•ËØ¢</a></td>
+                                    
+                                </tr>
+                                
+                                <!-- 
+                                 
+                                 <tr>
+                                 
+                                 <td class="text3"><a href="/otsweb/reservation/queryReservationAction.do?method=initShortMsgReservation">Áü≠‰ø°‰ª£Êü•</a></td>
+                                 
+                                 </tr>
+                                 
+                                 -->
+                                
+                                <tr>
+                                    
+                                    <td class="text3"><a
+                                        
+                                        href="/otsweb/order/myOrderAction.do?method=initRefund&showMessage=Y">ÈÄÄÁ•®</a>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    
+                                    <td class="text3"><a
+                                        
+                                        href="/otsweb/order/myOrderAction.do?method=initResign&showMessage=Y">ÊîπÁ≠æ</a>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    
+                                    <td class="left_12306"><img src="/otsweb/images/left_xiao.jpg" />ÊàëÁöÑ‰ø°ÊÅØ</td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    
+                                    <td class="text3"><a
+                                        
+                                        href="/otsweb/passengerAction.do?method=initUsualPassenger">Â∏∏Áî®ËÅîÁ≥ª‰∫∫</a>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    
+                                    <td class="text3"><a
+                                        
+                                        href="/otsweb/sysuser/editMemberAction.do?method=initEdit">‰∏™‰∫∫ËµÑÊñô</a>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    
+                                    <td class="text3"><a
+                                        
+                                        href="/otsweb/sysuser/userCenterAction.do?method=initForChangePwd">ÂØÜÁ†Å‰øÆÊîπ</a>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                                
+                                <!-- 
+                                 
+                                 <tr>
+                                 
+                                 <td class="text3"><a
+                                 
+                                 href="/otsweb/sysuser/userCenterAction.do?method=initQueryPoints">ÁßØÂàÜË¥¶Êà∑</a>
+                                 
+                                 </td>
+                                 
+                                 </tr>
+                                 
+                                 -->
+                                
+                                
+                                
+                            </table>
+                            
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <script>
+                        
+                        $(function() {
+                          
+                          var click_left_title = '‰∏™‰∫∫ËµÑÊñô';
+                          
+                          $("#left_down_z a").each(function() {
+                                                   
+                                                   if ($(this)[0].innerHTML === click_left_title) {
+                                                   
+                                                   var index = $(this).attr("name");
+                                                   
+                                                   $(this).css("color", "red");
+                                                   
+                                                   if ("" != index) {
+                                                   
+                                                   $(".ddlist").hide();
+                                                   
+                                                   $(".ddlist:eq(" + index + ")").toggle();
+                                                   
+                                                   $("h3 em:eq(" + index + ")").addClass("open");
+                                                   
+                                                   }
+                                                   
+                                                   }
+                                                   
+                                                   });
+                          
+                          });
+                        
+                        </script>
+                    
+                </div>
+                
+                
+                
+                <!--right -->
+                
+                
+                
+                <div class="containerWrap_right">
+                    
+                    <div class="right_up">Á≥ªÁªüÊ∂àÊÅØ</div>
+                    
+                    <div class="pim_font">
+                        
+                        <h1 class="text_16">ÁÅ´ËΩ¶Á•®ÂÖàÁîü ÔºåÊ¨¢ËøéÊÇ®ÔºÅ</h1>
+                        
+                        <p class="text_14">
+                        
+  					ÊÇ®ÊúÄÂêé‰∏ÄÊ¨°ÁôªÂΩïÊó∂Èó¥‰∏∫2012Âπ¥10Êúà09Âè∑21Êó∂34ÂàÜ„ÄÇ
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <p class="text_14" style="display: none" id="activeEamil">
+                        
+						ÊÇ®ÁöÑÁî®Êà∑Â∞öÊú™ÊøÄÊ¥ªÔºåËØ∑‰Ω†ÁôªÂΩïÈÇÆÁÆ±Ôºà<a
+                            
+							href='/otsweb/sysuser/userCenterAction.do?method=resendRegistEmail'
+                            
+							class='text_yellow'>ÈáçÂèëÊøÄÊ¥ªÈÇÆ‰ª∂</a>ÔºâÊøÄÊ¥ªÂ∏êÂè∑
+                        
+                        </p>
+                        
+                        <p class="text_14" id="unPayOrderCount" style="display: none;">
+                        
+						ÁõÆÂâçÊÇ®ËøòÊúâÊú™Â§ÑÁêÜÁöÑËÆ¢Âçï<span class="red"><strong>0Á¨î</strong></span>ÔºåËØ∑ÊÇ®Âà∞<a
+                            
+							href="/otsweb/order/myOrderAction.do?method=queryMyOrderNotComplete&leftmenu=Y"
+                            
+							class="text_yellow">Êú™ÂÆåÊàêËÆ¢Âçï</a>ËøõË°åÂ§ÑÁêÜ„ÄÇ
+                        
+                        </p>
+                        
+                        <p class="text_14" style="display: none" id="bookTicket">
+                        
+						Â¶ÇÊûúÊÇ®ÈúÄË¶ÅÈ¢ÑËÆ¢ËΩ¶Á•®ÔºåËØ∑ÊÇ®ÁÇπÂáª<a
+                            
+							href="/otsweb/order/querySingleAction.do?method=init"
+                            
+							class="text_yellow">ËΩ¶Á•®È¢ÑËÆ¢</a>„ÄÇ
+                        
+                        </p>
+                        
+                    </div>
+                    
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </div>
+            
+        </div>
+        
+        
+        
+    </body>
+    
+</html>
+
+
+
+<script language="javascript">
+    
+    var message = "";
+    
+    var messageShow ="";
+    
+    var flag ='null';
+    
+    if(messageShow != ""){
+        
+        if(flag == 'u'){
+            
+            $("#messageUp").css({display:"inline"});
+            
+            document.getElementById("messageUp").innerHTML = message;
+            
+        }else{
+            
+            $("#messageDown").css({display:"inline"});
+            
+            document.getElementById("messageDown").innerHTML = message;
+            
+        }
+        
+    }else{
+        
+        if ( message != ""){ 
+            
+            alert(message);
+            
+            
+            
+        }
+        
+        
+        
+    } 
+    
+    </script>
+
+
+
+
+==================================EndResponeString==================
