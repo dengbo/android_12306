@@ -1,0 +1,810 @@
+尚待解决：cookie值，各个站点的telecode
+
+首页地址：http://www.12306.cn/mormhweb,所有参数没有值时均传送空值（''）
+余票查询(相对host   http://www.12306.cn/mormhweb/kyfw/)
+
+1、余票查询
+GET /otsquery/query/queryRemanentTicketAction.do?method=init HTTP/1.1
+Accept  text/html, application/xhtml+xml, */*
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Connection	Keep-Alive
+Cookie	BIGipServerotsweb=2144600330.36895.0000
+
+点击查询按钮
+请求	GET /otsquery/query/queryRemanentTicketAction.do?method=queryLeftTicket&orderRequest.train_date=2012-12-04&orderRequest.from_station_telecode=BJP&orderRequest.to_station_telecode=SHH&orderRequest.train_no=&trainPassType=QB&trainClass=QB%23D%23Z%23T%23K%23QT%23&includeStudent=00&seatTypeAndNum=&orderRequest.start_time_str=00%3A00--24%3A00 HTTP/1.1
+x-requested-with	XMLHttpRequest
+Accept-Language	zh-cn
+Referer	http://dynamic.12306.cn/otsquery/query/queryRemanentTicketAction.do?method=init
+Accept	application/json, text/javascript, */*
+Content-Type	application/x-www-form-urlencoded
+Accept-Encoding	gzip, deflate
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Host	dynamic.12306.cn
+Connection	Keep-Alive
+Cookie	JSESSIONID=989AB6C696E15AC7F32A631829882587; BIGipServerotsweb=2144600330.36895.0000; BIGipServerotsquery=2363031818.33825.0000
+
+请求参数：(北京到上海)
+需要知道所有站点的telecode
+{
+url:/otsquery/query/queryRemanentTicketAction.do
+method:queryLeftTicket,
+orderRequest:
+{
+train_date:2012-12-04,	//日期
+from_station_telecode:BJP,	//始发站
+to_station_telecode=SHH,	//终点站
+train_no:xxxx,			//车次，如果没有输入则是""
+start_time_str:00%3A00--24%3A00 //时间
+},
+trainPassType:QB,	//查询方式，全部（QB），过路(GL)，始发(SF)
+trainClass:QB%23D%23Z%23T%23K%23QT%23(解码后是QB#D#Z#T#K#QT#),  //车类型选择
+includeStudent:00(查询)/0X00(学生团队查询)/1F(农民工团体查询),
+seatTypeAndNum:xxxx,			//座位类型及座位号，查询时为空
+
+}
+
+返回值
+0,<span id='id_2400000G4101' class='base_txtdiv' onmouseover=javascript:onStopHover('2400000G4101#VNP#AOH') onmouseout='onStopOut()'>G41</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;北京南&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;15:19,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海虹桥&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;20:50,05:31,19,--,<font color='#008800'>有</font>,<font color='#008800'>有</font>,--,--,--,--,--,--,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('G41#05:31#15:19#2400000G4101#VNP#AOH#20:50#北京南#上海虹桥#O*****0467M*****01479*****0019#3D6E63E6D29C9385DD1E29369D237CF8B21DECA7C40B172F6E821E22') value='预订'></input>\n1,<span id='id_240000G14903' class='base_txtdiv' onmouseover=javascript:onStopHover('240000G14903#VNP#AOH') onmouseout='onStopOut()'>G149</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;北京南&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;15:30,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;上海虹桥&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;21:00,05:30,--,--,20,<font color='#008800'>有</font>,--,--,--,--,--,--,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('G149#05:30#15:30#240000G14903#VNP#AOH#21:00#北京南#上海虹桥#O*****0322M*****0021#5D2FDEFB2547221D3F89B278DC54820E5CC39A9426933129A0F5D46D') value='预订'></input>\n2,<span id='id_2400000G1902' class='base_txtdiv' onmouseover=javascript:onStopHover('2400000G1902#VNP#AOH') onmouseout='onStopOut()'>G19</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;北京南&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;16:00,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;上海虹桥&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;20:55,04:55,<font color='#008800'>有</font>,--,<font color='#008800'>有</font>,<font color='#008800'>有</font>,--,--,--,--,--,--,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('G19#04:55#16:00#2400000G1902#VNP#AOH#20:55#北京南#上海虹桥#O*****0349M*****01269*****0023#891CC4D8DAEAD9468369301812B68BE3D758C17BBEECB7ACAFC8F1A4') value='预订'></input>\n3,<span id='id_240000G1510A' class='base_txtdiv' onmouseover=javascript:onStopHover('240000G1510A#VNP#AOH') onmouseout='onStopOut()'>G151</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;北京南&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;16:10,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;上海虹桥&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;21:40,05:30,--,--,<font color='darkgray'>无</font>,<font color='#008800'>有</font>,--,--,--,--,--,--,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('G151#05:30#16:10#240000G1510A#VNP#AOH#21:40#北京南#上海虹桥#O*****0194M*****0000#517B6A05DA22D64E06A4B1983B2A15A4A3BA33575FF15E0DF8ACA968') value='预订'></input>\n4,<span id='id_240000G15303' class='base_txtdiv' onmouseover=javascript:onStopHover('240000G15303#VNP#AOH') onmouseout='onStopOut()'>G153</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;北京南&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;16:15,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;上海虹桥&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;21:45,05:30,<font color='#008800'>有</font>,--,<font color='#008800'>有</font>,<font color='#008800'>有</font>,--,--,--,--,--,--,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('G153#05:30#16:15#240000G15303#VNP#AOH#21:45#北京南#上海虹桥#O*****0606M*****01559*****0022#3CF938295619CC1B3C4AD4E6B8028DE1C398E0621DB8013254BFDF8C') value='预订'></input>\n5,<span id='id_2400000G4300' class='base_txtdiv' onmouseover=javascript:onStopHover('2400000G4300#VNP#AOH') onmouseout='onStopOut()'>G43</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;北京南&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;16:26,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海虹桥&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;21:50,05:24,<font color='#008800'>有</font>,--,<font color='#008800'>有</font>,<font color='#008800'>有</font>,--,--,--,--,--,--,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('G43#05:24#16:26#2400000G4300#VNP#AOH#21:50#北京南#上海虹桥#O*****0495M*****01289*****0023#CFED3222A4DE839D38773501F2A0FA8ECA1D8D15DEA2C64C4D4A21BD') value='预订'></input>\n6,<span id='id_2400000G2102' class='base_txtdiv' onmouseover=javascript:onStopHover('2400000G2102#VNP#AOH') onmouseout='onStopOut()'>G21</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;北京南&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;17:00,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;上海虹桥&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;21:55,04:55,<font color='#008800'>有</font>,--,<font color='#008800'>有</font>,<font color='#008800'>有</font>,--,--,--,--,--,--,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('G21#04:55#17:00#2400000G2102#VNP#AOH#21:55#北京南#上海虹桥#O*****0465M*****01319*****0023#B6803A1A44AC6A5C790D7D654BB699A6371058AE6BD7404A7C7FBDCD') value='预订'></input>\n7,<span id='id_240000G15705' class='base_txtdiv' onmouseover=javascript:onStopHover('240000G15705#VNP#AOH') onmouseout='onStopOut()'>G157</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;北京南&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;17:05,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;上海虹桥&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;22:35,05:30,--,--,2,<font color='#008800'>有</font>,--,--,--,--,--,--,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('G157#05:30#17:05#240000G15705#VNP#AOH#22:35#北京南#上海虹桥#O*****0424M*****0003#3A3A7CCC7C63F64EFA6487A210E25FBA91687A11FBC1CEE7BF2B27C1') value='预订'></input>\n8,<span id='id_240000G16102' class='base_txtdiv' onmouseover=javascript:onStopHover('240000G16102#VNP#AOH') onmouseout='onStopOut()'>G161</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;北京南&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;17:38,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;上海虹桥&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;23:01,05:23,11,--,<font color='#008800'>有</font>,<font color='#008800'>有</font>,--,--,--,--,--,--,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('G161#05:23#17:38#240000G16102#VNP#AOH#23:01#北京南#上海虹桥#O*****0517M*****01459*****0011#D774E432A67ADD27E9BF25747A4232ED9DC0608C85EAB73E28F62D93') value='预订'></input>\n9,<span id='id_240000D31307' class='base_txtdiv' onmouseover=javascript:onStopHover('240000D31307#VNP#SHH') onmouseout='onStopOut()'>D313</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;北京南&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;19:32,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;07:15,11:43,--,--,--,<font color='#008800'>有</font>,--,<font color='#008800'>有</font>,--,--,--,<font color='darkgray'>无</font>,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('D313#11:43#19:32#240000D31307#VNP#SHH#07:15#北京南#上海#O*****0136O*****30004*****0255#9807CD71BCB0B9F2E553B87ECAB2AA1A0D9B3BB67C7BD674F8FF7615') value='预订'></input>\n10,<span id='id_240000T1090E' class='base_txtdiv' onmouseover=javascript:onStopHover('240000T1090E#BJP#SHH') onmouseout='onStopOut()'>T109</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;北京&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;19:33,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;10:26,14:53,--,--,--,--,9,<font color='darkgray'>无</font>,<font color='darkgray'>无</font>,--,<font color='darkgray'>无</font>,<font color='#008800'>有</font>,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('T109#14:53#19:33#240000T1090E#BJP#SHH#10:26#北京#上海#1*****30644*****00001*****00006*****00093*****0000#8FDAF4C539907057860D3023C668F605F593664F9ECF19541733577F') value='预订'></input>\n11,<span id='id_240000D31101' class='base_txtdiv' onmouseover=javascript:onStopHover('240000D31101#BJP#SHH') onmouseout='onStopOut()'>D311</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;北京&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;21:02,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;08:50,11:48,--,--,--,<font color='#008800'>有</font>,--,<font color='#008800'>有</font>,--,--,--,<font color='darkgray'>无</font>,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('D311#11:48#21:02#240000D31101#BJP#SHH#08:50#北京#上海#O*****01394*****0224O*****3000#11C501BF4AB4DFDA345B07EDBF739545F6BEEB0B005976FA5C538C14') value='预订'></input>\n12,<span id='id_240000D32106' class='base_txtdiv' onmouseover=javascript:onStopHover('240000D32106#BJP#SHH') onmouseout='onStopOut()'>D321</span>,<img src='/otsweb/images/tips/first.gif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;北京&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;21:08,<img src='/otsweb/images/tips/last.gif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;08:56,11:48,--,--,--,<font color='#008800'>有</font>,--,<font color='#008800'>有</font>,--,--,--,<font color='darkgray'>无</font>,--,<input type='button' class='yuding_u' onmousemove=this.className='yuding_u_over' onmousedown=this.className='yuding_u_down' onmouseout=this.className='yuding_u' onclick=javascript:getSelected('D321#11:48#21:08#240000D32106#BJP#SHH#08:56#北京#上海#O*****01594*****0225O*****3000#64A20A6DB43A4699558A6F4D52C5136D1219135A2728496BC110A9CE') value='预订'></input>
+2、列车时刻表查询
+（1）、车次查询
+请求	GET /TrainQuery/trainPassStationByTrainCode.jsp HTTP/1.1
+Accept	text/html, application/xhtml+xml, */*
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Connection	Keep-Alive
+Cookie	JSESSIONID=AEF292F85D5BA7CD26B5BB5A45938D32; BIGipServerotsweb=2295595274.48160.0000; 
+	BIGipServertrainquery=1576468746.24608.0000; BIGipServerotsquery=2379809034.33825.0000
+
+点击查询
+URL：http://dynamic.12306.cn/TrainQuery/iframeTrainPassStationByTrainCode.jsp
+请求	POST /TrainQuery/iframeTrainPassStationByTrainCode.jsp HTTP/1.1
+Accept	text/html, application/xhtml+xml, */*
+Referer	http://dynamic.12306.cn/TrainQuery/trainPassStationByTrainCode.jsp
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Content-Type	application/x-www-form-urlencoded
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Content-Length	153
+Connection	Keep-Alive
+Cache-Control	no-cache
+Cookie	JSESSIONID=AEF292F85D5BA7CD26B5BB5A45938D32; BIGipServerotsweb=2295595274.48160.0000; 
+        BIGipServertrainquery=1576468746.24608.0000
+post参数
+/*时间*/
+nyear1=2012			
+nyear1_new_value=false
+nmonth1=12
+nmonth1_new_value=false
+nday1=05
+nday1_new_value=false
+trainCode1=D123		//车次号
+trainCode1_new_value=true
+randCode=0		//验证码的值
+
+获取验证码（URL：http://dynamic.12306.cn/TrainQuery/passCodeActi0n.do?rand=rrand）
+请求	GET /TrainQuery/passCodeActi0n.do?rand=rrand HTTP/1.1
+Accept	image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5
+Referer	http://dynamic.12306.cn/TrainQuery/trainPassStationByTrainCode.jsp
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Connection	Keep-Alive
+Cookie	JSESSIONID=AEF292F85D5BA7CD26B5BB5A45938D32; BIGipServerotsweb=2295595274.48160.0000; 
+        BIGipServertrainquery=1576468746.24608.0000
+返回值
+<script>
+
+		parent.mygrid.clearAll();
+
+			parent.document.getElementById("img_rrand_code").src="passCodeActi0n.do?rand=rrand"+'?'+Math.random();
+			parent.document.getElementById("randCode").value="";
+
+					parent.document.getElementById("trainCodeDIV").innerHTML="<Strong>D123</Strong>次列车（动车 有空调），始发站：<Strong>北京西</Strong>；终到站：<Strong>武汉</Strong>；全程共有<Strong>9</Strong>个停靠站：";	
+
+var string = parent.cc.getComboText();
+if(string.charAt(0) == 'C' || string.charAt(0) == 'D' || string.charAt(0) == 'G'){
+//parent.mygrid.setColumnHidden(14,"true");
+//parent.mygrid.setColumnHidden(16,"true");
+}else{
+//parent.mygrid.setColumnHidden(14,"false");
+//parent.mygrid.setColumnHidden(16,"false");
+}
+
+parent.mygrid.addRow(0,"1,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF ,D123    , ---- , 06:59 , --,--,--,--,--,--,--,--,--,--",0);
+
+var string = parent.cc.getComboText();
+if(string.charAt(0) == 'C' || string.charAt(0) == 'D' || string.charAt(0) == 'G'){
+//parent.mygrid.setColumnHidden(14,"true");
+//parent.mygrid.setColumnHidden(16,"true");
+}else{
+//parent.mygrid.setColumnHidden(14,"false");
+//parent.mygrid.setColumnHidden(16,"false");
+}
+
+parent.mygrid.addRow(1,"2,保定^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E4%BF%9D%E5%AE%9A ,D123    , 08:09 , 08:10 , 01:10,--,--,51,43,--,--,--,--,--",1);
+
+var string = parent.cc.getComboText();
+if(string.charAt(0) == 'C' || string.charAt(0) == 'D' || string.charAt(0) == 'G'){
+//parent.mygrid.setColumnHidden(14,"true");
+//parent.mygrid.setColumnHidden(16,"true");
+}else{
+//parent.mygrid.setColumnHidden(14,"false");
+//parent.mygrid.setColumnHidden(16,"false");
+}
+
+parent.mygrid.addRow(2,"3,石家庄^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E7%9F%B3%E5%AE%B6%E5%BA%84 ,D123    , 09:15 , 09:17 , 02:16,--,--,98,82,--,--,--,--,--",2);
+
+var string = parent.cc.getComboText();
+if(string.charAt(0) == 'C' || string.charAt(0) == 'D' || string.charAt(0) == 'G'){
+//parent.mygrid.setColumnHidden(14,"true");
+//parent.mygrid.setColumnHidden(16,"true");
+}else{
+//parent.mygrid.setColumnHidden(14,"false");
+//parent.mygrid.setColumnHidden(16,"false");
+}
+
+parent.mygrid.addRow(3,"4,安阳^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E5%AE%89%E9%98%B3 ,D123    , 11:00 , 11:01 , 04:01,--,--,177,147,--,--,--,--,--",3);
+
+var string = parent.cc.getComboText();
+if(string.charAt(0) == 'C' || string.charAt(0) == 'D' || string.charAt(0) == 'G'){
+//parent.mygrid.setColumnHidden(14,"true");
+//parent.mygrid.setColumnHidden(16,"true");
+}else{
+//parent.mygrid.setColumnHidden(14,"false");
+//parent.mygrid.setColumnHidden(16,"false");
+}
+
+parent.mygrid.addRow(4,"5,郑州^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E9%83%91%E5%B7%9E ,D123    , 12:31 , 12:41 , 05:32,--,--,243,202,--,--,--,--,--",4);
+
+var string = parent.cc.getComboText();
+if(string.charAt(0) == 'C' || string.charAt(0) == 'D' || string.charAt(0) == 'G'){
+//parent.mygrid.setColumnHidden(14,"true");
+//parent.mygrid.setColumnHidden(16,"true");
+}else{
+//parent.mygrid.setColumnHidden(14,"false");
+//parent.mygrid.setColumnHidden(16,"false");
+}
+
+parent.mygrid.addRow(5,"6,漯河^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E6%BC%AF%E6%B2%B3 ,D123    , 13:49 , 13:50 , 06:50,--,--,259,207,--,--,--,--,--",5);
+
+var string = parent.cc.getComboText();
+if(string.charAt(0) == 'C' || string.charAt(0) == 'D' || string.charAt(0) == 'G'){
+//parent.mygrid.setColumnHidden(14,"true");
+//parent.mygrid.setColumnHidden(16,"true");
+}else{
+//parent.mygrid.setColumnHidden(14,"false");
+//parent.mygrid.setColumnHidden(16,"false");
+}
+
+parent.mygrid.addRow(6,"7,驻马店^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E9%A9%BB%E9%A9%AC%E5%BA%97 ,D123    , 14:23 , 14:24 , 07:24,--,--,261,209,--,--,--,--,--",6);
+
+var string = parent.cc.getComboText();
+if(string.charAt(0) == 'C' || string.charAt(0) == 'D' || string.charAt(0) == 'G'){
+//parent.mygrid.setColumnHidden(14,"true");
+//parent.mygrid.setColumnHidden(16,"true");
+}else{
+//parent.mygrid.setColumnHidden(14,"false");
+//parent.mygrid.setColumnHidden(16,"false");
+}
+
+parent.mygrid.addRow(7,"8,信阳^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E4%BF%A1%E9%98%B3 ,D123    , 15:10 , 15:11 , 08:11,--,--,284,227,--,--,--,--,--",7);
+
+var string = parent.cc.getComboText();
+if(string.charAt(0) == 'C' || string.charAt(0) == 'D' || string.charAt(0) == 'G'){
+//parent.mygrid.setColumnHidden(14,"true");
+//parent.mygrid.setColumnHidden(16,"true");
+}else{
+//parent.mygrid.setColumnHidden(14,"false");
+//parent.mygrid.setColumnHidden(16,"false");
+}
+
+parent.mygrid.addRow(8,"9,武汉^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E6%AD%A6%E6%B1%89 ,D123    , 17:09 , ---- , 10:10,--,--,333,267,--,--,--,--,--",8);
+</script>
+（2）发到站查询
+请求	GET /TrainQuery/trainInfoByStation.jsp HTTP/1.1
+Accept	text/html, application/xhtml+xml, */*
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Connection	Keep-Alive
+Cookie	JSESSIONID=AEF292F85D5BA7CD26B5BB5A45938D32; BIGipServerotsweb=2295595274.48160.0000; 
+	BIGipServertrainquery=1576468746.24608.0000
+
+点击查询
+请求	POST /TrainQuery/iframeTrainInfoByStation.jsp HTTP/1.1
+Accept	text/html, application/xhtml+xml, */*
+Referer	http://dynamic.12306.cn/TrainQuery/trainInfoByStation.jsp
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Content-Type	application/x-www-form-urlencoded
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Content-Length	337
+Connection	Keep-Alive
+Cache-Control	no-cache
+Cookie	JSESSIONID=AEF292F85D5BA7CD26B5BB5A45938D32; BIGipServerotsweb=2295595274.48160.0000; BIG
+	ipServertrainquery=1576468746.24608.0000
+post参数
+/*时间*/
+nyear1=2012
+nyear1_new_value=true
+nmonth1=12
+nmonth1_new_value=true
+nday1=05
+nday1_new_value=false
+/*终始站*/
+startStation=%E5%8C%97%E4%BA%AC（北京）
+startStation_new_value=true
+arriveStation=%E4%B8%8A%E6%B5%B7（上海）
+arriveStation_new_value=true
+rFlag=1	//显示的类别，1为显示返程车次，2为全部，3为始发，4为终到，5为始发终到，6为过路
+name_ckball=value_ckball
+tFlagDC=DC&tFlagZ=Z&tFlagT=T&tFlagK=K&tFlagPK=PK&tFlagPKE=PKE&tFlagLK=LK //车次类别
+randCode=3  //输入的验证码
+
+返回值
+<script>
+
+parent.mygrid.clearAll();
+parent.mygrid2.clearAll();
+
+parent.document.getElementById("randCode").value="";
+parent.document.getElementById("img_rrand_code").src="passCodeActi0n.do?rand=rrand"+'?'+Math.random();
+
+parent.document.getElementById("stationDIV").innerHTML="<strong>北京</strong>→<strong>上海</strong>终到列车共有<strong>2</strong>趟：";
+
+
+if(parent.document.getElementById("ckb1").checked &&
+	!parent.document.getElementById("ckb2").checked &&
+	!parent.document.getElementById("ckb3").checked &&
+	!parent.document.getElementById("ckb4").checked &&
+	!parent.document.getElementById("ckb5").checked &&
+	!parent.document.getElementById("ckb6").checked &&
+	!parent.document.getElementById("ckb7").checked){
+
+//parent.mygrid.setColumnHidden(10,"true");
+//parent.mygrid.setColumnHidden(11,"true");
+//parent.mygrid.setColumnHidden(12,"true");
+}else{
+//parent.mygrid.setColumnHidden(10,"false");
+//parent.mygrid.setColumnHidden(11,"false");
+//parent.mygrid.setColumnHidden(12,"false");
+}
+
+parent.document.getElementById("stationDIV2").innerHTML="<strong>返程</strong>列车信息：";
+
+parent.mygrid.addRow(0,"1,T109^skbcx.jsp?cxlx=cc&date=20121205&trainCode=T109,北京^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E5%8C%97%E4%BA%AC^self,  上海^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E4%B8%8A%E6%B5%B7^self,19:33,10:26,14:53,北京^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E5%8C%97%E4%BA%AC^self,上海^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E4%B8%8A%E6%B5%B7^self,特快,有,--,--,--,--,881/921,478/499,306/317/327,--,179",0);
+
+parent.mygrid.addRow(1,"2,1461^skbcx.jsp?cxlx=cc&date=20121205&trainCode=1461,北京^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E5%8C%97%E4%BA%AC^self,  上海^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E4%B8%8A%E6%B5%B7^self,11:58,08:01,20:03,北京^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E5%8C%97%E4%BA%AC^self,上海^skbcx.jsp?cxlx=czjgcc&zm=&date=20121205&stationName_passTrain=%E4%B8%8A%E6%B5%B7^self,普快,有,--,--,--,--,--,--,285/296/306,--,158",1);
+
+parent.document.getElementById("stationDIV2").innerHTML="<strong>返程</strong>列车信息：";	
+
+parent.document.getElementById("stationDIV2").style.display='none';
+parent.document.getElementById("gridbox2").style.display='none';
+<!-- =====================================================返程========================================================== -->
+</script>
+
+3、车票预订
+请求	GET /otsweb/order/querySingleAction.do?method=init HTTP/1.1
+Accept	text/html, application/xhtml+xml, */*
+Referer	https://dynamic.12306.cn/otsweb/
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Connection	Keep-Alive
+Cookie	JSESSIONID=DD057AD541849C38C1E8E71DE0F5ECC1; BIGipServerotsweb=2295595274.48160.0000; 
+	BIGipServertrainquery=1576468746.24608.0000; BIGipServerotsquery=2379809034.33825.0000
+
+点击查询（北京到上海，单程）
+请求	GET /otsweb/order/querySingleAction.do?method=queryLeftTicket&orderRequest.train_date=2012-12-05&orderRequest.from_station_telecode=BJP&orderRequest.to_station_telecode=SHH&orderRequest.train_no=2400000G1704&trainPassType=QB&trainClass=QB%23D%23Z%23T%23K%23QT%23&includeStudent=00&seatTypeAndNum=&orderRequest.start_time_str=00%3A00--24%3A00 HTTP/1.1
+x-requested-with	XMLHttpRequest
+Accept-Language	zh-cn
+Referer	https://dynamic.12306.cn/otsweb/order/querySingleAction.do?method=init
+Accept	text/plain, */*
+Content-Type	application/x-www-form-urlencoded
+Accept-Encoding	gzip, deflate
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Host	dynamic.12306.cn
+Connection	Keep-Alive
+Cookie	JSESSIONID=DD057AD541849C38C1E8E71DE0F5ECC1; BIGipServerotsweb=2295595274.48160.0000; 
+	BIGipServertrainquery=1576468746.24608.0000; BIGipServerotsquery=2379809034.33825.0000
+使用get方法（与余票查询参数类似）
+{
+method：queryLeftTicket,
+orderRequest：
+{
+	train_date:2012-12-05,	
+	from_station_telecode:BJP,
+	to_station_telecode=SHH,
+	train_no=2400000G1704, //G17
+	start_time_str:00%3A00--24%3A00(00:00--24:00)	
+},
+trainPassType=QB， 
+	trainClass=QB%23D%23Z%23T%23K%23QT%23，（QB#D#Z#T#K#QT#）//车次类型
+	includeStudent=00，
+	seatTypeAndNum:,
+}
+4、订单查询
+请求	GET /otsweb/order/myOrderAction.do?method=init&showMessage=Y HTTP/1.1
+Accept	text/html, application/xhtml+xml, */*
+Referer	https://dynamic.12306.cn/otsweb/order/myOrderAction.do?method=init&showMessage=Y
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Connection	Keep-Alive
+Cookie	JSESSIONID=9047B9AC092A93E5137D145A3CA5465D; 
+	IGipServerotsweb=2295595274.48160.0000; BIGipServertrainquery=1576468746.24608.0000; BIGipServerotsquery=2379809034.33825.0000
+返回值中有token值，需读取并保存
+<form name="myOrderForm" id="queryForm" method="post" action="/otsweb/order/myOrderAction.do?method=queryMyOrder">
+<div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="b0db26817726a27e763b896c36d01b0c"></div>
+
+点击查询
+
+请求	POST /otsweb/order/myOrderAction.do?method=queryMyOrder HTTP/1.1
+Accept	text/html, application/xhtml+xml, */*
+Referer	https://dynamic.12306.cn/otsweb/order/myOrderAction.do?method=queryMyOrder
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Content-Type	application/x-www-form-urlencoded
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Content-Length	297
+Connection	Keep-Alive
+Cache-Control	no-cache
+Cookie	JSESSIONID=9047B9AC092A93E5137D145A3CA5465D; BIGipServerotsweb=2295595274.48160.0000; 
+	BIGipServertrainquery=1576468746.24608.0000; BIGipServerotsquery=2379809034.33825.0000
+
+post参数
+org.apache.struts.taglib.html.TOKEN=7a3fab9c7624082d78eaefe6a36bdaab
+queryOrderDTO.location_code=_1
+leftmenu=Y
+queryDataFlag=1  //查询日期类型，1为按订单日期，2为按乘车日期
+queryOrderDTO.from_order_date=2012-12-05
+queryOrderDTO.to_order_date=2012-12-05
+queryOrderDTO.sequence_no=1234567890	//查询的订单号
+queryOrderDTO.train_code=D123		//查询的车次
+queryOrderDTO.name=hehe			//乘车者姓名
+
+返回值
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta name="Robots"   content="none"/>
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="Cache-Control"  content="no-cache"/> 
+<meta http-equiv="pragma"  content="no-cache"/> 
+<title>我的订单</title>
+
+<link  href="/otsweb/css/style.css" rel="stylesheet"  type="text/css"/>
+<link  href="/otsweb/css/newsty.css" rel="stylesheet"  type="text/css"/>
+<link  href="/otsweb/css/contact.css" rel="stylesheet"  type="text/css"/>
+<link href="/otsweb/css/validation.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/otsweb/css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="/otsweb/css/suggest.css"/>
+<link href="/otsweb/css/cupertino/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+<link href="/otsweb/css/ots_common.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="http://www.12306.cn/mormhweb/images/favicon.ico"/>
+<script type="text/javascript" src="/otsweb/js/common/iepngfix_tilebg.js?version=4.91"></script>
+<script src="/otsweb/js/common/jquery-1.4.2.min.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/autoHeight.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/jquery.bgiframe.min.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/jquery.easyui.min.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/jquery.form.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/datepicker/WdatePicker.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/j.suggest.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/school_display1.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/school_suggest1.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/city_name_suggest.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/trainCodeSuggest.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/date.js?version=4.91" type="text/javascript"></script>
+<script src="/otsweb/js/common/sidetag.js?version=4.91" type="text/javascript"></script>
+
+
+<script>
+   $(document).ready(function(){
+	   if(parent.notLogin==undefined) {
+		   parent.location='/otsweb' + '/main.jsp';
+		   return;
+		   }
+	        var isHide = "";
+	        if (isHide == "true") {
+		        if(parent.hideMenu){
+		        	//parent.hideMenu();
+			    }
+		     } else {
+		    	 if(parent.showMenu){
+		    		 parent.showMenu();
+				 }
+			 }
+			 var clicktitle = '我的12306';
+			 if(parent.clickMenu&&clicktitle!==''){
+				 parent.clickMenu('我的12306');
+		     }
+
+
+			 var isLogin= true
+			 var u_name = '邓波';
+			 if (isLogin) {
+			  parent.hasLogin(u_name);
+	  	     }else{
+	  	  	  parent.notLogin();
+	      	 }
+	 });
+</script>
+</head>
+<body>
+<script type="text/javascript"
+	src="/otsweb/js/common/jquery.validate.min.js?version=4.91"></script>
+<script type="text/javascript"
+	src="/otsweb/js/common/formCheck.js?version=4.91" charset="UTF-8"></script>
+<script src="/otsweb/js/order/my_order_pagination.js?version=4.91"
+	type="text/javascript"></script>
+<script src="/otsweb/js/order/my_order.js?version=4.91"
+	type="text/javascript"></script>
+<script src="/otsweb/js/common/jquery.pagination.js?version=4.91"
+	type="text/javascript"></script>
+<link rel="stylesheet" href="/otsweb/css/pagination.css" />
+<script>
+	var recordCount = '0';
+	var pageIndex = '0';
+	var pageSize = '7';
+	var selectedOrder = '1234567890';
+</script>
+<div class="conWrap">
+	<div class="text1">
+		<div class="containerWrap_left">
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+<div class="left_up">
+	<img style="margin-left: 10px; margin-top: 6px;"
+		src="/otsweb/images/left_upz.png" />
+
+
+</div>
+<div class="left_bao">
+	<div class="left_m">
+		邓波
+
+	</div>
+	<div class="left_down_z" id="left_down_z">
+		<table width="100%" cellspacing="0" cellpadding="0" height="100%">
+			<tr>
+				<td class="left_12306"><img src="/otsweb/images/left_xiao.jpg" />我的订单</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/order/myOrderAction.do?method=queryMyOrderNotComplete&leftmenu=Y">未完成订单</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/order/myOrderAction.do?method=init&showMessage=Y">订单查询</a>
+				</td>
+			</tr>
+			<tr>
+                <td class="text3"><a href="/otsweb/reservation/queryReservationAction.do?method=initReservation">预约查询</a></td>
+            </tr>
+            <!-- 
+            <tr>
+                <td class="text3"><a href="/otsweb/reservation/queryReservationAction.do?method=initShortMsgReservation">短信代查</a></td>
+            </tr>
+             -->
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/order/myOrderAction.do?method=initRefund&showMessage=Y">退票</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/order/myOrderAction.do?method=initResign&showMessage=Y">改签</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="left_12306"><img src="/otsweb/images/left_xiao.jpg" />我的信息</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/passengerAction.do?method=initUsualPassenger">常用联系人</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/sysuser/editMemberAction.do?method=initEdit">个人资料</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/sysuser/userCenterAction.do?method=initForChangePwd">密码修改</a>
+				</td>
+			</tr>
+			<!-- 
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/sysuser/userCenterAction.do?method=initQueryPoints">积分账户</a>
+				</td>
+			</tr>
+			-->
+
+		</table>
+
+	</div>
+</div>
+<script>
+	$(function() {
+		var click_left_title = '订单查询';
+		$("#left_down_z a").each(function() {
+			if ($(this)[0].innerHTML === click_left_title) {
+				var index = $(this).attr("name");
+				$(this).css("color", "red");
+				if ("" != index) {
+					$(".ddlist").hide();
+					$(".ddlist:eq(" + index + ")").toggle();
+					$("h3 em:eq(" + index + ")").addClass("open");
+				}
+			}
+		});
+	});
+</script>
+		</div>
+		<!--right -->
+		<div class="pim_right">
+			<div class="pim_title">
+				<div class="pim_titlefont" style="float: left;">订单查询</div>
+			</div>
+			<div class="jdan">
+				<form name="myOrderForm" id="queryForm" method="post" action="/otsweb/order/myOrderAction.do?method=queryMyOrder"><div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7a3fab9c7624082d78eaefe6a36bdaab"></div>
+					<div id="error_info" class="label_inf"></div>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0"
+						class="cx_from">
+						<input type="hidden" name="queryOrderDTO.location_code" value="_1" id="queryOrderDTOlocation_code">
+						<!-- 用于tab显示 -->
+
+
+
+
+						<input type="hidden" name="leftmenu" value="Y" />
+						<tr>
+							<td width="90" align="right" class="font_r">查询日期类型：</td>
+							<td><select name="queryDataFlag" id="query_data_flag" style="width:135px;"><option value="1">按订票日期查询</option>
+									<option value="2" selected="selected">按乘车日期查询</option></select></td>
+							<td width="90" class="font_r">起始日期：</td>
+							<td><input type="text" name="queryOrderDTO.from_order_date" value="2012-12-05" readonly="readonly" id="queryOrderDTOfrom_order_date" class="input_20txt"></td>
+							<td width="70" class="font_r">结束日期：</td>
+							<td><input type="text" name="queryOrderDTO.to_order_date" value="2012-12-05" readonly="readonly" id="queryOrderDTOto_order_date" class="input_20txt"></td>
+						</tr>
+						<tr>
+							<td width="90" align="right" class="font_r">订单号：</td>
+							<td><input type="text" name="queryOrderDTO.sequence_no" value="1234567890" id="queryOrderDTOsequence_no" class="input_20txt"></td>
+							<td width="90" class="font_r">车次：</td>
+							<td><input type="text" name="queryOrderDTO.train_code" value="D123" id="queryOrderDTOtrain_code" style="text-transform: uppercase" class="input_20txt"></td>
+
+							<td width="70" align="right" class="font_r">乘客姓名：</td>
+							<td><input type="text" name="queryOrderDTO.name" value="hehe" id="queryOrderDTOname" class="input_20txt"></td>
+						</tr>
+						<tr>
+							<td class="font_r">&nbsp;</td>
+							<td colspan="4">&nbsp;</td>
+							<td class="font_r"><a id="submitId" href="#"
+								onclick="return compareDate();" class="button_c"
+								style="margin: 0px 25px 0px 0px;"><span><img
+										src="/otsweb/images/btn_ico1.gif" /> <ins>查询</ins></span></a> <!--
+            				   &nbsp; &nbsp; &nbsp;<a href="#" class="button_c" onclick="window.print();"><span><ins>打印订单</ins></span></a>
+            --></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+
+			<!--tab_con -->
+			<div class="tab_w">
+				<div id="tab" style="display: none;">
+					<ul id="nav_list">
+						<li onclick="nav_set(this,'tag_1')" class="slelcted" id="_1"><a
+							href="#">全部</a></li>
+						<li onclick="nav_set(this,'tag_2')" id="_2"><a href="#">网上支付</a></li>
+						<li onclick="nav_set(this,'tag_3')" id="_3"><a href="#">网上预订</a></li>
+					</ul>
+				</div>
+
+				<div id="nav_cont">
+
+
+					<!-- 全部票的list end-->
+					<div id="not_complete_msg" class="sign_suc" style="display: none">没有符合查询条件的订单信息！</div>
+					<!-- 提示文字 -->
+					<h1 id="tag_1" class="cont_tag_show">
+
+
+
+						<!-- 全部票的list end-->
+					</h1>
+					<!-- 分页代码 -->
+					<div id="divload"
+						style="display: none; text-align: left; float: right;">
+						<img src="/otsweb/css/images/pagination_loading.gif" />&nbsp;加载中,请稍候...
+					</div>
+					<div id="showInfo" style="display: none; text-align: left;">
+						<font color="#FF0000">未查询到订单。</font>
+					</div>
+					<div id="Pagination"
+						style="display: none; text-align: left; float: right;"></div>
+					<h1 id="tag_2">
+						<!-- 网上支付票的list start-->
+
+					</h1>
+
+					<!-- 网上支付票的list end-->
+
+
+					<!-- 网上预订票的list start-->
+
+					<h1 style="display: none;" id="tag_3">
+
+					</h1>
+
+					<!-- 网上预订票的list end-->
+
+				</div>
+			</div>
+			<div id="chaxuntishi"
+				style="line-height: 25px; text-align: left; text-indent: 15px">
+				<p style="font-size: 14px">温馨提示：</p>
+				<p>
+					（1）在车票载明的列车开车前2小时前，尚未换取纸质车票的，可以在本网站<a href="http://www.12306.cn">www.12306.cn</a>办理改签、退票手续；列车开车前2小时内或者已经换取纸质车票的，只能在车站改签、退票窗口办理。铁路客票代售点不能办理改签、退票手续。
+				</p>
+				<p>（2）在车站办理改签、退票手续时，请携带购票时所使用的乘车人有效身份证件原件和银行卡。使用二代居民身份证以外的其他有效身份证件购票或者二代居民身份证不能识读的，还须携带订单号码。</p>
+				<p>（3）车票只能改签一次；已经改签的车票不能再次改签。</p>
+				<p>（4）在本网站可查询乘车日为当前日期前50天以内的历史订单。</p>
+				<p style="text-align: right;">
+					<a href="/otsweb/info/question_passenger_knowledge.jsp"
+						target="_blank">更多&gt;&gt;</a>
+				</p>
+			</div>
+			<!--tab_con end-->
+		</div>
+		<!--right end-->
+	</div>
+</div>
+<!--con end-->
+<!--footer -->
+<!-- 改签，退票，取消，都会调用此form，使用js修改action，并添加其他参数 -->
+<form name="myOrderForm" id="myOrderForm" method="post" action="/otsweb/order/myOrderAction.do?method=resign"><div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7a3fab9c7624082d78eaefe6a36bdaab"></div>
+	<input type="hidden" name="queryOrderDTO.from_order_date" value="Wed Dec 05 00:00:00 CST 2012" id="from_order_date">
+	<input type="hidden" name="queryOrderDTO.to_order_date" value="Wed Dec 05 00:00:00 CST 2012" id="to_order_date">
+	<input type="hidden" name="ticket_key" value="" id="ticket_key">
+</form>
+
+<!-- 取消订单 -->
+<form name="orderForm" id="transferForm" method="post" action="/otsweb/order/orderAction.do?method=cancelMyOrder"><div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="7a3fab9c7624082d78eaefe6a36bdaab"></div>
+	<input type="hidden" name="sequence_no" value="" id="sequence_no">
+</form>
+<script type="text/javascript">
+	var size = '';
+	if (size == '0') {
+		$("#not_complete_msg").css({
+			display : "block"
+		});
+		//隐藏提示文字div
+		$('#chaxuntishi').css({
+			display : "none"
+		});
+	}
+	if (size > 0) {
+		$('#chaxuntishi').css({
+			display : "none"
+		});
+	}
+	function nav_set(obj, tag_N) {
+		var nav_list = document.getElementById("nav_list")
+				.getElementsByTagName("li");
+		var nav_cont = document.getElementById("nav_cont")
+				.getElementsByTagName("h1");
+		for ( var i = 0; i < nav_list.length; i++) {
+			nav_list[i].className = "";
+			nav_cont[i].className = "cont_tag";
+		}
+		obj.className = "slelcted";
+		document.getElementById(tag_N).className = "cont_tag_show";
+
+	}
+</script>
+</body>
+</html>
+
+<script language="javascript">
+		var message = "";
+        var messageShow ="";
+        var flag ='null';
+        if(messageShow != ""){
+			if(flag == 'u'){
+				$("#messageUp").css({display:"inline"});
+				document.getElementById("messageUp").innerHTML = message;
+			}else{
+				$("#messageDown").css({display:"inline"});
+				document.getElementById("messageDown").innerHTML = message;
+			}
+         }else{
+     		if ( message != ""){ 
+    			alert(message);
+
+    		}
+
+         } 
+</script>
+5、退票
+请求	GET /otsweb/order/myOrderAction.do?method=initRefund&showMessage=Y HTTP/1.1
+Accept	text/html, application/xhtml+xml, */*
+Referer	https://dynamic.12306.cn/otsweb/loginAction.do?method=login
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Connection	Keep-Alive
+Cookie	JSESSIONID=4A11F101EDFC41A9EB00A12549199B33; BIGipServerotsweb=2178154762.22560.0000
+
+点击查询
+请求	POST /otsweb/order/myOrderAction.do?method=queryMyOrder HTTP/1.1
+Accept	text/html, application/xhtml+xml, */*
+Referer	https://dynamic.12306.cn/otsweb/order/myOrderAction.do?method=initRefund&showMessage=Y
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Content-Type	application/x-www-form-urlencoded
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Content-Length	291
+Connection	Keep-Alive
+Cache-Control	no-cache
+Cookie	JSESSIONID=4A11F101EDFC41A9EB00A12549199B33; BIGipServerotsweb=2178154762.22560.0000
+
+post参数（与订单查询基本一致）
+org.apache.struts.taglib.html.TOKEN=5395b6ee41a81b17f13c10c6eb3e9f0d
+come_from_flag=my_refund		//不同点
+leftmenu=Y
+queryDataFlag=1
+queryOrderDTO.from_order_date=2012-12-05
+queryOrderDTO.to_order_date=2012-12-05
+queryOrderDTO.sequence_no=1234567890
+queryOrderDTO.train_code=D123
+queryOrderDTO.name=hehe
+
+6、改签
+请求	GET /otsweb/order/myOrderAction.do?method=initResign&showMessage=Y HTTP/1.1
+Accept	text/html, application/xhtml+xml, */*
+Referer	https://dynamic.12306.cn/otsweb/order/myOrderAction.do?method=queryMyOrder
+Accept-Language	zh-CN
+User-Agent	Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Accept-Encoding	gzip, deflate
+Host	dynamic.12306.cn
+Connection	Keep-Alive
+Cookie	JSESSIONID=4A11F101EDFC41A9EB00A12549199B33; BIGipServerotsweb=2178154762.22560.0000
