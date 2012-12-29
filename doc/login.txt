@@ -1,0 +1,82 @@
+POST /otsweb/loginAction.do?method=login HTTP/1.1
+Accept: text/html, application/xhtml+xml, */*
+Referer: https://dynamic.12306.cn/otsweb/loginAction.do?method=init
+Accept-Language: zh-CN
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: dynamic.12306.cn
+Content-Length: 156
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: JSESSIONID=95B52130B2A1FF446010770C96C8BD8D; BIGipServerotsweb=2396258570.48160.0000
+
+
+loginRand=698&refundLogin=N&refundFlag=Y&loginUser.user_name=asdfsd&nameErrorFocus=&user.password=asdfsadf&passwordErrorFocus=&randCode=1234&randErrorFocus=
+
+
+
+loginRand=720&refundLogin=N&refundFlag=Y&loginUser.user_name=iphonetest&nameErrorFocus=&user.password=iphone123&passwordErrorFocus=&randCode=4abx&randErrorFocus=focus
+
+
+
+
+
+
+
+
+
+
+POST /otsweb/loginAction.do?method=loginAysnSuggest HTTP/1.1
+x-requested-with: XMLHttpRequest
+Accept-Language: zh-cn
+Referer: https://dynamic.12306.cn/otsweb/loginAction.do?method=init#
+Accept: application/json, text/javascript, */*
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Host: dynamic.12306.cn
+Content-Length: 0
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: JSESSIONID=7F93200FCE9788CE8C6BDBE367B15CF7; BIGipServerotsweb=2748580106.36895.0000
+
+POST /otsweb/loginAction.do?method=loginAysnSuggest HTTP/1.1
+x-requested-with: XMLHttpRequest
+Accept-Language: zh-cn
+Referer: https://dynamic.12306.cn/otsweb/loginAction.do?method=init
+Accept: application/json, text/javascript, */*
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Host: dynamic.12306.cn
+Content-Length: 0
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: JSESSIONID=CC6B4E505456091A3919E9B4BFF4E7D5; BIGipServerotsweb=2748580106.36895.0000
+
+
+
+
+
+
+POST /otsweb/loginAction.do?method=login HTTP/1.1
+Accept: text/html, application/xhtml+xml, */*
+Referer: https://dynamic.12306.cn/otsweb/loginAction.do?method=init
+Accept-Language: zh-CN
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: dynamic.12306.cn
+Content-Length: 162
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: JSESSIONID=CC6B4E505456091A3919E9B4BFF4E7D5; BIGipServerotsweb=2748580106.36895.0000
+
+loginRand=180&refundLogin=N&refundFlag=Y&loginUser.user_name=sunlei1141&nameErrorFocus=&user.password=2008114115&passwordErrorFocus=&randCode=37by&randErrorFocus=
+
+
+
+
+
+
+
+
