@@ -1,0 +1,7 @@
+证件类型:
+
+<select name="loginUser.id_type_code" id="cardType" style="width:220px;"><option value="1">二代身份证</option>
+<option value="2">一代身份证</option>
+<option value="C">港澳通行证</option>
+<option value="G">台湾通行证</option>
+<option value="B">护照</option></select>
