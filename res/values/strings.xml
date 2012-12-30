@@ -4,6 +4,7 @@
     <string name="app_name">android_12306</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <!-- login页面  -->
     <string name="login_network_title">网络设置提示</string>
     <string name="login_network_msg">没有可用的网络，是否设置网络</string>
     <string name="ok">是</string>
@@ -23,4 +24,28 @@
 	<string name="login_check_error">验证码错误</string>
 	<string name="login_name_error">用户名或密码错误</string>
 	<string name="login_ing">正在登录。。。</string>
+	<string name="login_wait">请再按一次</string>
+	<!-- home页面  -->
+	<string name="logout">登出</string>
+	<string name="home_head">我的订票助手</string>
+	<string name="home_1">我的资料</string>
+	<string name="home_2">同行旅客管理</string>
+	<string name="home_3">车票查询</string>
+	<string name="home_4">我的订单</string>
+	<string name="home_5">余票通知</string>
+	<string name="home_6">订单通知</string>
+	<string name="home_7">反馈建议</string>
+	<string name="home_8">软件评分</string>
+	<string name="home_9">软件升级</string>
+	<string name="home_10">关于我们</string>
+	<!-- query页面  -->
+	<string name="back">返回</string>
+	<string name="query">查询</string>
+	<string name="query_start">出发地：</string>
+	<string name="query_end">目的地：</string>
+	<string name="query_date">出发日期</string>
+	<string name="query_time">出发时间</string>
+	<string name="query_kind">列车类型</string>
+	<string name="query_class">席别</string>
+	<string name="query_hint">每次购买单张车票成功的概率更高，购票不晚于开车前两小时，提前12天可以购票，每个车站第一天的开售时间不一样，如需抢票，请提前测试</string>
 </resources>

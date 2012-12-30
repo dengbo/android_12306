@@ -1,6 +1,5 @@
 package com.dengbo.view;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -12,6 +11,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -23,10 +23,11 @@ import android.widget.ImageView;
 
 import com.dengbo.control.InitCookieService;
 import com.dengbo.control.RouterService;
+import com.dengbo.util.CommonUtil;
 import com.dengbo.util.NotifyExceptionUtil;
 import com.dengbo.util.StringPoolUtil;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends BaseActivity {
 	public static final String LOG = "LoginActivity";
 
 	private EditText userEditText, passwdEditText, checkEditText;
@@ -58,6 +59,7 @@ public class LoginActivity extends Activity {
 		filter.addAction(StringPoolUtil.SEND_LOGIN_AUTH);
 		filter.addAction(StringPoolUtil.SEND_LOGIN);
 		filter.addAction(StringPoolUtil.GET_COOKIE);
+		filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
 		mLogin_data = new Recieve_login_data();
 		registerReceiver(mLogin_data, filter);
 	}
@@ -76,64 +78,58 @@ public class LoginActivity extends Activity {
 		loginButton.setOnClickListener(loginClickListener);
 		checkImageView.setOnClickListener(refreshClickListener);
 
-		while (true) {
-			if (isOpenNetwork() == true) {
-				cookieIntent = new Intent(LoginActivity.this,
-						InitCookieService.class);
-				cookieIntent.setAction(StringPoolUtil.GET_COOKIE);
-				startService(cookieIntent);
-				// 获取验证码
-				mIntent = new Intent(LoginActivity.this, RouterService.class);
-				mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
-				startService(mIntent);
-				break;
-			} else {
-				Resources resources = getResources();
-				AlertDialog.Builder builder = new AlertDialog.Builder(
-						LoginActivity.this);
-				builder.setTitle(
-						resources.getString(R.string.login_network_title))
-						.setMessage(
-								resources.getString(R.string.login_network_msg));
+		if (isOpenNetwork() == true) {
+			cookieIntent = new Intent(LoginActivity.this,
+					InitCookieService.class);
+			cookieIntent.setAction(StringPoolUtil.GET_COOKIE);
+			startService(cookieIntent);
+			// 获取验证码
+			mIntent = new Intent(LoginActivity.this, RouterService.class);
+			mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
+			startService(mIntent);
+		} else {
+			Resources resources = getResources();
+			AlertDialog.Builder builder = new AlertDialog.Builder(
+					LoginActivity.this);
+			builder.setTitle(resources.getString(R.string.login_network_title))
+					.setMessage(resources.getString(R.string.login_network_msg));
 
-				builder.setPositiveButton(resources.getString(R.string.ok),
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								Intent intent = null;
+			builder.setPositiveButton(resources.getString(R.string.ok),
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							Intent intent = null;
 
-								try {
-									String sdkVersion = android.os.Build.VERSION.SDK;
-									if (Integer.valueOf(sdkVersion) > 10) {
-										intent = new Intent(
-												android.provider.Settings.ACTION_SETTINGS);
-									} else {
-										intent = new Intent();
-										ComponentName comp = new ComponentName(
-												"com.android.settings",
-												"com.android.settings.Settings");
-										intent.setComponent(comp);
-										intent.setAction("android.intent.action.VIEW");
-									}
-									LoginActivity.this.startActivity(intent);
-								} catch (Exception e) {
-									Log.v(LOG,
-											"open network settings failed, please check...");
-									e.printStackTrace();
+							try {
+								String sdkVersion = android.os.Build.VERSION.SDK;
+								if (Integer.valueOf(sdkVersion) > 10) {
+									intent = new Intent(
+											android.provider.Settings.ACTION_SETTINGS);
+								} else {
+									intent = new Intent();
+									ComponentName comp = new ComponentName(
+											"com.android.settings",
+											"com.android.settings.Settings");
+									intent.setComponent(comp);
+									intent.setAction("android.intent.action.VIEW");
 								}
+								LoginActivity.this.startActivity(intent);
+							} catch (Exception e) {
+								Log.v(LOG,
+										"open network settings failed, please check...");
+								e.printStackTrace();
 							}
-						})
-						.setNegativeButton(resources.getString(R.string.no),
-								new DialogInterface.OnClickListener() {
-									@Override
-									public void onClick(DialogInterface dialog,
-											int which) {
-										dialog.cancel();
-										finish();
-									}
-								}).show();
-			}
+						}
+					})
+					.setNegativeButton(resources.getString(R.string.no),
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									dialog.cancel();
+									finish();
+								}
+							}).show();
 		}
 	}
 
@@ -167,9 +163,14 @@ public class LoginActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Log.v(LOG, "login");
-			mIntent.setAction(StringPoolUtil.SEND_LOGIN_AUTH);
-			startService(mIntent);
+			if (CommonUtil.COOKIE != "") {
+				Log.v(LOG, "login");
+				mIntent.setAction(StringPoolUtil.SEND_LOGIN_AUTH);
+				startService(mIntent);
+			}
+			else {
+				NotifyExceptionUtil.notify(LoginActivity.this, getResources().getString(R.string.login_wait));
+			}
 		}
 	};
 
@@ -188,6 +189,8 @@ public class LoginActivity extends Activity {
 			// TODO Auto-generated method stub
 			String action = intent.getAction();
 			Bundle mBundle = intent.getExtras();
+			ConnectivityManager connectivityManager;
+			NetworkInfo info;
 			Log.v(LOG, action);
 			if (mBundle != null) {
 				if (action.equalsIgnoreCase(StringPoolUtil.GET_CHECK_IMG)) {// 获取验证码图片
@@ -206,8 +209,8 @@ public class LoginActivity extends Activity {
 						.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN_AUTH)) {// 处理获取到autho后，发送请求登录信息
 					mIntent.setAction(StringPoolUtil.SEND_LOGIN);
 					String[] dataStrings = new String[4];
-					dataStrings[0] = "dengbodb@sina.com";// userEditText.getText().toString();
-					dataStrings[1] = "03170822l"; // passwdEditText.getText().toString();
+					dataStrings[0] = userEditText.getText().toString();
+					dataStrings[1] = passwdEditText.getText().toString();
 					dataStrings[2] = checkEditText.getText().toString();
 					dataStrings[3] = mBundle
 							.getString(StringPoolUtil.LOGIN_RAND);
@@ -215,6 +218,7 @@ public class LoginActivity extends Activity {
 					mBundles.putStringArray(StringPoolUtil.LOGIN, dataStrings);
 					mIntent.putExtras(mBundles);
 					startService(mIntent);
+					NotifyExceptionUtil.notify(LoginActivity.this, getResources().getString(R.string.login_ing));
 				} else if (action.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN)) {// 处理登录后
 					boolean isError = mBundle.getBoolean(StringPoolUtil.ERROR);
 					if (isError) {
@@ -235,7 +239,7 @@ public class LoginActivity extends Activity {
 									res.getString(R.string.login_name_error));
 						}
 					} else {
-						Log.v(LOG, "ok");
+						Log.v(LOG, "login ok");
 						Intent startIntent = new Intent(LoginActivity.this,
 								HomeActivity.class);
 						LoginActivity.this.startActivity(startIntent);
@@ -244,6 +248,24 @@ public class LoginActivity extends Activity {
 				} else if (action.equals(StringPoolUtil.GET_COOKIE)) {
 					Log.v(LOG, "get the cookie");
 					stopService(cookieIntent);
+				} else if (action
+						.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
+					Log.d("mark", "网络状态已经改变");
+					connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+					info = connectivityManager.getActiveNetworkInfo();
+					if (info != null && info.isAvailable()) {
+						cookieIntent = new Intent(LoginActivity.this,
+								InitCookieService.class);
+						cookieIntent.setAction(StringPoolUtil.GET_COOKIE);
+						startService(cookieIntent);
+						// 获取验证码
+						mIntent = new Intent(LoginActivity.this,
+								RouterService.class);
+						mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
+						startService(mIntent);
+						String name = info.getTypeName();
+						Log.d("mark", "当前网络名称：" + name);
+					}
 				}
 			}
 

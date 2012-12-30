@@ -17,8 +17,6 @@ public class CommonUtil {
 
 	public static String getCookie()
 	{
-		while(COOKIE.equals(""))
-			Log.v(LOG, COOKIE);
 		return COOKIE;
 	}
 	public static byte[] inputStreamToByteArray(InputStream inputStream) {

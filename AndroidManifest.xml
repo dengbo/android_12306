@@ -30,6 +30,12 @@
             android:name=".HomeActivity"
             android:label="@string/app_name" >
         </activity>
+         <activity
+            android:name=".QueryActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".OrderActivity" >
+        </activity>
         <service
             android:name="com.dengbo.control.RouterService"
             android:label="@string/app_name" >

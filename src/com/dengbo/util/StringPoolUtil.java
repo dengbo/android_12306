@@ -12,6 +12,7 @@ public interface StringPoolUtil {
 	String SEND_LOGIN = "com.dengbo.view.sendLogin";
 	String SEND_LOGIN_AUTH = "com.dengbo.view.sendLoginAuth";
 	String SEND_YUPIAOREQ = "com.dengbo.view.sendYupiaoReq";
+	String CHECK_ORDER_UNPAID = "com.dengbo.view.checkOrderUnpaid";
 
 	/*
 	 * 所有的请求命令，相当于命令表，统一管理
