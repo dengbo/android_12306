@@ -19,8 +19,9 @@ public class InitModel {
 	private static String loginString = "https://dynamic.12306.cn/otsweb/loginAction.do?method=login";
 	private static String loginAuthString = "https://dynamic.12306.cn/otsweb/loginAction.do?method=loginAysnSuggest";
 	private static String yupiaoReqString = "http://dynamic.12306.cn/otsquery/query/queryRemanentTicketAction.do";
-	private static final String orderUnpaidUrl = "http://dynamic.12306.cn/otsweb/myOrderAction.do?method=queryMyOrderNotComplete&leftmenu=Y";
-
+	private static final String orderUnpaidUrl = "http://dynamic.12306.cn/otsweb/myOrderAction.do";
+//	private static final String orderUnpaidUrl = "http://dynamic.12306.cn/otsweb/myOrderAction.do?method=queryMyOrderNotComplete&leftmenu=Y";
+	
 	public static ReqNetDate initModel(String action, Bundle mBundle) {
 		ReqNetDate reqNetDate = null;
 		if (action.equalsIgnoreCase(StringPoolUtil.GET_CHECK_IMG)) {

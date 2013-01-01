@@ -21,6 +21,9 @@ public class Parse {
 		else if (actionString.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN)) {
 			return new ParseLogin(stream).parse(stream);
 		}
+		else if(actionString.equals(StringPoolUtil.CHECK_ORDER_UNPAID)){
+			return new ParseOrderUnpaid(stream).parse(stream);
+		}
 		return null;
 	}
 }
