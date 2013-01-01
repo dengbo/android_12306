@@ -7,6 +7,7 @@ import com.dengbo.model.ReqCookie;
 import com.dengbo.model.ReqLogin;
 import com.dengbo.model.ReqLoginToken;
 import com.dengbo.model.ReqNetDate;
+import com.dengbo.model.ReqOrderUnpaid;
 import com.dengbo.util.StringPoolUtil;
 
 public class InitModel {
@@ -45,6 +46,10 @@ public class InitModel {
 			reqNetDate.setMethod("POST");
 			reqNetDate.setUrl(loginString);
 			reqNetDate.setProtocol("https");
+		}else if(action.equalsIgnoreCase(StringPoolUtil.CHECK_ORDER_UNPAID)){
+			reqNetDate = new ReqOrderUnpaid();
+			reqNetDate.setMethod("GET");
+//			reqNetDate.setUrl(url)
 		}
 		reqNetDate.initHeadParam();
 		reqNetDate.initParam(mBundle);
