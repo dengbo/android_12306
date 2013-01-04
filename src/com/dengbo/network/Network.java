@@ -145,8 +145,10 @@ public class Network {
 		try {
 			url.append("?");
 			url.append(param);
+			Log.e("network url",url.toString());
 			connection = (HttpsURLConnection) new URL(url.toString())
 					.openConnection();
+			Log.e("network"+" createHttpsConnectGet",(connection==null)+"");
 			connection.setRequestMethod("GET");
 			connection.setConnectTimeout(5000);
 			Set<String> keySets = headParam.keySet();

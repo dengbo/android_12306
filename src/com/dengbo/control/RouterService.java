@@ -14,9 +14,10 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
-public class RouterService extends Service{
+public class RouterService extends Service {
 
 	private static final String TAG = "RouterService";
+
 	@Override
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub
@@ -41,8 +42,8 @@ public class RouterService extends Service{
 		return super.onStartCommand(intent, flags, startId);
 	}
 
-	private class AsyncNet extends AsyncTask<ReqNetDate, Integer, ByteArrayOutputStream>
-	{
+	private class AsyncNet extends
+			AsyncTask<ReqNetDate, Integer, ByteArrayOutputStream> {
 		private Exception mException = null;
 		private String actionString = "";
 
@@ -55,7 +56,7 @@ public class RouterService extends Service{
 				outputStream = new Network().getInputStream(reqNetDate[0]);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Log.e("rounterService", e.toString());
 				mException = e;
 				return null;
 			}
@@ -81,7 +82,7 @@ public class RouterService extends Service{
 				return;
 			}
 			Parse mParse = new Parse();
-			Bundle respBundle =mParse.parseStream(actionString,result);
+			Bundle respBundle = mParse.parseStream(actionString, result);
 			try {
 				result.close();
 			} catch (IOException e) {
