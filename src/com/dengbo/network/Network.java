@@ -243,7 +243,7 @@ public class Network {
 		}
 		String sessionId = "";
 		String cookieVal = "";
-		String key = null;
+		String key = "";
 		// 取cookie
 		for (int i = 1; (key = connection.getHeaderFieldKey(i)) != null; i++) {
 			if (key.equalsIgnoreCase("set-cookie")) {

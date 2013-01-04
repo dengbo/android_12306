@@ -3,102 +3,250 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ligth_black"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
-	<LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="53dp"
-	    android:background="@drawable/banner"
-	    android:orientation="horizontal" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="53dp"
+        android:background="@drawable/banner"
+        android:orientation="horizontal" >
 
-   	    <Button
-   	        android:layout_width="wrap_content"
-   	    	android:layout_height="wrap_content"
-   	    	android:text="@string/back"
-   	    	android:id="@+id/back"
-   	    	/>
-   	    <TextView
-   	        android:layout_width="wrap_content"
-   	    	android:layout_height="wrap_content"
-   	    	android:text="@string/home_head"
-   	    	android:textSize="20sp"
-   	    	android:layout_gravity="center_vertical"
-   	    	android:layout_weight="1"
-   	        />
-   	    <Button
-   	        android:layout_width="wrap_content"
-   	    	android:layout_height="wrap_content"
-   	    	android:text="@string/query"
-   	    	android:id="@+id/query"
-   	    	/>
-   	</LinearLayout>
-   	<RelativeLayout
-   	    android:layout_width="wrap_content"
-   	    android:layout_height="wrap_content"
-   	    >
-   	    <ImageButton
-   	        android:layout_width="wrap_content"
-   	    	android:layout_height="100dp"
-   	    	android:src="@drawable/query_change"
-   	    	android:id="@+id/query_change"
-   	    	android:layout_centerVertical="true"
-   	        />
-   	    <LinearLayout
-   	        android:layout_width="wrap_content"
-   	    	android:layout_height="53dp"
-   	    	android:background="@drawable/white_frame"
-   	    	android:orientation="horizontal"
-   	    	android:id="@+id/query_start_l"
-   	    	android:layout_toRightOf="@id/query_change"
-   	    	android:layout_alignParentTop="true"
-   	        >
-			<ImageView
-			    android:src="@drawable/query_start"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_gravity="center_vertical"
-			    />
-			<TextView
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/query_start"
-			    android:textSize="16sp"
-			    android:layout_gravity="center_vertical"
-			    />
-			<EditText
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:id="@+id/query_start"
-			    />
-   	    </LinearLayout>
-   	    <LinearLayout
-   	        android:layout_width="wrap_content"
-   	    	android:layout_height="53dp"
-   	    	android:background="@drawable/white_frame"
-   	    	android:orientation="horizontal"
-   	    	android:id="@+id/query_end"
-   	    	android:layout_marginTop="10dp"
-   	    	android:layout_toRightOf="@id/query_change"
-   	    	android:layout_below="@id/query_start_l"
-   	        >
-			<ImageView
-			    android:src="@drawable/query_end"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_gravity="center_vertical"
-			    />
-			<TextView
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/query_end"
-			    android:textSize="16sp"
-			    android:layout_gravity="center_vertical"
-			    />
-			<EditText
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:id="@+id/query_end"
-			    />
-   	    </LinearLayout>
-   	</RelativeLayout>
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@string/home_head"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/query" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/query_change"
+            android:layout_width="wrap_content"
+            android:layout_height="85dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/query_change" />
+
+        <LinearLayout
+            android:id="@+id/query_start_l"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@id/query_change"
+            android:background="@drawable/white_frame"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/query_start" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/query_start"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/query_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/query_end_l"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_below="@id/query_start_l"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/query_change"
+            android:background="@drawable/white_frame"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/query_end" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/query_end"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/query_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/line_black" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/white_frame"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/query_date"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/query_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/trig" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/query_time"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/query_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/trig" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/white_frame"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/query_kind"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/query_kind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/trig" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/query_class"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/query_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/trig" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/query_hint" />
+
 </LinearLayout>

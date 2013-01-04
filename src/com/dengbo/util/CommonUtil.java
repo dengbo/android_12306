@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import android.util.Log;
 
@@ -15,6 +16,10 @@ public class CommonUtil {
 	 */
 	public static String COOKIE = "";
 
+	/*
+	 * 保存token
+	 */
+	public static ArrayList<String> tokenList = new ArrayList<String>();
 	public static String getCookie()
 	{
 		return COOKIE;

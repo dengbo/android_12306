@@ -75,6 +75,11 @@ public class RouterService extends Service{
 				NotifyExceptionUtil.notify(RouterService.this, mException);
 				return;
 			}
+			if(result == null)
+			{
+				NotifyExceptionUtil.notify(RouterService.this, "network error");
+				return;
+			}
 			Parse mParse = new Parse();
 			Bundle respBundle =mParse.parseStream(actionString,result);
 			try {
