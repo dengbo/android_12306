@@ -5,8 +5,9 @@ import java.util.HashMap;
 import com.dengbo.util.CommonUtil;
 
 import android.os.Bundle;
+import android.text.StaticLayout;
 
-public class ReqNetDate {
+public abstract class ReqNetDate {
 	protected String urlString;
 	protected String protocolString;
 	protected HashMap<String, String> headParamHashMap;
@@ -52,7 +53,6 @@ public class ReqNetDate {
 	public void initHeadParam() {
 		headParamHashMap.put("Accept-Language", "zh-CN");
 		headParamHashMap.put("User-Agent", " Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)");
-		headParamHashMap.put("Content-Type", "application/x-www-form-urlencoded");
 		headParamHashMap.put("Host","dynamic.12306.cn");
 		headParamHashMap.put("Connection", " Keep-Alive");
 		headParamHashMap.put("Cache-Control", " no-cache");
@@ -65,4 +65,9 @@ public class ReqNetDate {
 	public void initParam(Bundle mBundle) {
 
 	}
+//	//所有的子类重载该方法，调用initModel的register,并在相应的activity里调用model的register，初始化
+//	public static  void register()
+//	{
+//		return ;
+//	}
 }

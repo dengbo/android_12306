@@ -1,7 +1,13 @@
 package com.dengbo.model;
 
+
 public class ReqCookie extends ReqNetDate{
 
+	public ReqCookie() {
+		// TODO Auto-generated constructor stub
+		super();
+		register();
+	}
 	@Override
 	public void setProtocol(String protocol) {
 		// TODO Auto-generated method stub
@@ -36,6 +42,13 @@ public class ReqCookie extends ReqNetDate{
 		headParamHashMap.put("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)");
 		headParamHashMap.put("Accept-Encoding", "gzip, deflate");
 		headParamHashMap.put("Cache-Control", "no-cache");
+		headParamHashMap.put("Content-Type", "application/x-www-form-urlencoded");
+	}
+
+	//所有的子类重载该方法，调用initModel的register
+	public static void register() {
+		// TODO Auto-generated method stub
+		return ;
 	}
 
 }

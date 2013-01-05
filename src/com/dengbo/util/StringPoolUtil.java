@@ -1,6 +1,5 @@
 package com.dengbo.util;
 
-
 public interface StringPoolUtil {
 
 	/*
@@ -13,13 +12,26 @@ public interface StringPoolUtil {
 	String SEND_LOGIN_AUTH = "com.dengbo.view.sendLoginAuth";
 	String SEND_YUPIAOREQ = "com.dengbo.view.sendYupiaoReq";
 	String CHECK_ORDER_UNPAID = "com.dengbo.view.checkOrderUnpaid";
-	String GET_TOKRN = "com.dengbo.view.getToken";
+	String GET_Order_TOKRN = "com.dengbo.view.getOrderToken";
+
+
+
+	// sharePrefrence key
+	String SHARE_PREF = "share_pref";
 
 	/*
-	 * 所有的请求命令，相当于命令表，统一管理
+	 * 数据库相关的字符串
 	 */
+	// 创建m表格的列名
+	String KEY_NAME = "name";
+	String KEY_ACTION = "action";
+	String KEY_URL = "url";
+	String KEY_PRO = "protocol";
+	String KEY_METHOD = "method";
 
-
+	// 表名
+	String MODEL_TABLE = "model";
+	String PARSE_TABLE = "parse";
 	/*
 	 * 错误原因
 	 */
@@ -29,13 +41,16 @@ public interface StringPoolUtil {
 	/*
 	 * 所有的信息交互key,主要用于信息存在bundle中流动时，get和put使用同一份key，避免造成混乱
 	 */
-	String RESP_CHECK = "resp_check"; 			//请求返回的验证码
-	String ERROR = "error";						//错误信息
-	String ERROR_REASON = "error_reson";		//错误原因
+	String RESP_CHECK = "resp_check"; // 请求返回的验证码
+	String ERROR = "error"; // 错误信息
+	String ERROR_REASON = "error_reson"; // 错误原因
 
-	//login 界面
-	String LOGIN_ERROR = "loginerror";			//登录请求auth中返回的error字符串
+	// login 界面
+	String LOGIN_ERROR = "loginerror"; // 登录请求auth中返回的error字符串
 
-	String LOGIN = "login";						//登录时发送数据
-	String LOGIN_RAND = "loginrand";			//登录请求中的loginrand参数已经auth中返回的loginrand字符串
+	String LOGIN = "login"; // 登录时发送数据
+	String LOGIN_RAND = "loginrand"; // 登录请求中的loginrand参数已经auth中返回的loginrand字符串
+
+	// home 界面
+	String ORDER_TOKEN = "orderToken"; // 请求订单时获取token
 }

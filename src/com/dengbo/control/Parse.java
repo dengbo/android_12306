@@ -24,6 +24,9 @@ public class Parse {
 		else if(actionString.equals(StringPoolUtil.CHECK_ORDER_UNPAID)){
 			return new ParseOrderUnpaid(stream).parse(stream);
 		}
+		else if(actionString.equalsIgnoreCase(StringPoolUtil.GET_Order_TOKRN)){
+			return new ParseToken(stream).parse(stream);
+		}
 		return null;
 	}
 }

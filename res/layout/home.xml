@@ -29,12 +29,18 @@
             android:text="@string/home_head"
             android:textSize="20sp" />
     </LinearLayout>
+    <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:id="@+id/home_1"
         android:orientation="horizontal" >
 
         <TextView
@@ -54,11 +60,17 @@
             android:src="@drawable/trig" />
     </LinearLayout>
 
+     <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:id="@+id/home_2"
         android:orientation="horizontal" >
 
         <TextView
@@ -77,12 +89,17 @@
             android:layout_height="wrap_content"
             android:src="@drawable/trig" />
     </LinearLayout>
-
+ <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:id="@+id/home_3"
         android:orientation="horizontal" >
 
         <TextView
@@ -97,17 +114,21 @@
             android:layout_weight="1" />
 
         <ImageView
-            android:id="@+id/home_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/trig" />
     </LinearLayout>
-
+ <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:id="@+id/home_4"
         android:orientation="horizontal" >
 
         <TextView
@@ -126,12 +147,17 @@
             android:layout_height="wrap_content"
             android:src="@drawable/trig" />
     </LinearLayout>
-
+ <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:id="@+id/home_5"
         android:orientation="horizontal" >
 
         <TextView
@@ -150,11 +176,16 @@
             android:layout_height="wrap_content"
             android:src="@drawable/trig" />
     </LinearLayout>
-
+ <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
+        android:id="@+id/home_6"
         android:layout_marginRight="10dp"
         android:orientation="horizontal" >
 
@@ -174,12 +205,17 @@
             android:layout_height="wrap_content"
             android:src="@drawable/trig" />
     </LinearLayout>
-
+ <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:id="@+id/home_7"
         android:orientation="horizontal" >
 
         <TextView
@@ -198,11 +234,16 @@
             android:layout_height="wrap_content"
             android:src="@drawable/trig" />
     </LinearLayout>
-
+ <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
+        android:id="@+id/home_8"
         android:layout_marginRight="10dp"
         android:orientation="horizontal" >
 
@@ -222,12 +263,17 @@
             android:layout_height="wrap_content"
             android:src="@drawable/trig" />
     </LinearLayout>
-
+ <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:id="@+id/home_9"
         android:orientation="horizontal" >
 
         <TextView
@@ -246,12 +292,17 @@
             android:layout_height="wrap_content"
             android:src="@drawable/trig" />
     </LinearLayout>
-
+ <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:id="@+id/home_10"
         android:orientation="horizontal" >
 
         <TextView
@@ -270,6 +321,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/trig" />
     </LinearLayout>
-
+ <ImageView
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/line_black"
+        />
 </LinearLayout>
 </ScrollView>

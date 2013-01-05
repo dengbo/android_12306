@@ -16,7 +16,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme" android:name="com.dengbo.app.App">
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name" >
@@ -30,11 +30,46 @@
             android:name=".HomeActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="LoginSignActivity"
+            android:label="@string/app_name"></activity>
+        <activity
+            android:name=".DataActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".FellowActivity"
+            android:label="@string/app_name" >
+        </activity>
          <activity
             android:name=".QueryActivity"
             android:label="@string/app_name" >
         </activity>
         <activity android:name=".OrderActivity" >
+        </activity>
+        <activity
+            android:name=".NotifyYupiaoActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".NotifyOrderActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".FeedbackActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".RateActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SoftUpgradeActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/app_name" >
         </activity>
         <service
             android:name="com.dengbo.control.RouterService"

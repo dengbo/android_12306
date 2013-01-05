@@ -6,12 +6,18 @@ import android.os.Bundle;
 
 public class ReqLogin extends ReqNetDate{
 
+//	public ReqLogin() {
+//		// TODO Auto-generated constructor stub
+//		super();
+//		register();
+//	}
 	@Override
 	public void initHeadParam() {
 		// TODO Auto-generated method stub
 		super.initHeadParam();
 		headParamHashMap.put("Accept","text/html, application/xhtml+xml, */*");
 		headParamHashMap.put("Referer","https://dynamic.12306.cn/otsweb/loginAction.do?method=init");
+		headParamHashMap.put("Content-Type", "application/x-www-form-urlencoded");
 	}
 
 	@Override
@@ -33,5 +39,12 @@ public class ReqLogin extends ReqNetDate{
 		.append(dataStrings[2])
 		.append("&randErrorFocus=focus");
 	}
+
+//	//所有的子类重载该方法，调用initModel的register
+//	public static void register() {
+//		// TODO Auto-generated method stub
+//		InitModel.register("ReqLogin", StringPoolUtil.SEND_LOGIN, StringPoolUtil.loginString, "https", "POST");
+//		return ;
+//	}
 
 }

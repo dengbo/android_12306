@@ -3,6 +3,7 @@ package com.dengbo.control;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import com.dengbo.app.App;
 import com.dengbo.model.ReqNetDate;
 import com.dengbo.network.Network;
 import com.dengbo.util.NotifyExceptionUtil;
@@ -32,11 +33,36 @@ public class RouterService extends Service {
 	}
 
 	@Override
+	public void onCreate() {
+		// TODO Auto-generated method stub
+		super.onCreate();
+	}
+
+	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		// TODO Auto-generated method stub
 		String actionString = intent.getAction();
 		Bundle mBundle = intent.getExtras();
-		ReqNetDate reqNetDate = InitModel.initModel(actionString, mBundle);
+		ReqNetDate reqNetDate = null;
+		try {
+			reqNetDate = InitModel.initModel(actionString, mBundle);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			Log.e(TAG, e.getMessage());
+			NotifyExceptionUtil.notify(RouterService.this, e);
+			return super.onStartCommand(intent, flags, startId);
+		}
+		catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			Log.e(TAG, e.getMessage());
+			NotifyExceptionUtil.notify(RouterService.this, e);
+			return super.onStartCommand(intent, flags, startId);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			Log.e(TAG, e.getMessage());
+			NotifyExceptionUtil.notify(RouterService.this, e);
+			return super.onStartCommand(intent, flags, startId);
+		}
 		AsyncNet taskAsyncNet = new AsyncNet();
 		taskAsyncNet.execute(reqNetDate);
 		return super.onStartCommand(intent, flags, startId);

@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.dengbo.control.InitCookieService;
 import com.dengbo.control.RouterService;
@@ -33,6 +34,7 @@ public class LoginActivity extends BaseActivity {
 	private EditText userEditText, passwdEditText, checkEditText;
 	private Button loginButton;
 	private ImageView checkImageView;
+	private TextView loginSignTextView;
 
 	// 启动主service的intent
 	private Intent mIntent;
@@ -71,12 +73,14 @@ public class LoginActivity extends BaseActivity {
 		checkEditText = (EditText) findViewById(R.id.login_check_edit);
 		checkImageView = (ImageView) findViewById(R.id.login_check_img);
 		loginButton = (Button) findViewById(R.id.login_btn);
+		loginSignTextView = (TextView) findViewById(R.id.login_sign);
 
 		userEditText.setFocusable(true);
 		userEditText.requestFocus();
 
 		loginButton.setOnClickListener(loginClickListener);
 		checkImageView.setOnClickListener(refreshClickListener);
+		loginSignTextView.setOnClickListener(signClickListener);
 
 		if (isOpenNetwork() == true) {
 			cookieIntent = new Intent(LoginActivity.this,
@@ -147,6 +151,16 @@ public class LoginActivity extends BaseActivity {
 		return false;
 	}
 
+	//点击注册
+	private OnClickListener signClickListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent mIntent = new Intent(LoginActivity.this , LoginSignActivity.class);
+			startActivity(mIntent);
+		}
+	};
 	// 点击刷新验证码
 	private OnClickListener refreshClickListener = new OnClickListener() {
 

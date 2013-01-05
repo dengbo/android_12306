@@ -11,6 +11,7 @@
     <ImageView
         android:layout_width="217dp"
         android:layout_height="56dp"
+        android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/login_logo"
         android:src="@drawable/logo" />
@@ -19,7 +20,7 @@
         android:layout_width="292dp"
         android:layout_height="194dp"
         android:background="@drawable/white_frame"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/login_frame"
         android:layout_below="@+id/login_logo">
