@@ -19,11 +19,11 @@ android client for 12306.cn
  
  收到广播后会更新界面。所有的action和bundle的key统一存储在一个stringpool中，便于管理。
  
- #模块图划分说明
+#模块图划分说明
  
  模块的划分暂时参照ios端的划分
  
   ![模块图](http://pic1.qnpic.com/img/dengbodb/290a6d28/)
 
- #模块添加说明
+#模块添加说明
  添加相应的前台activity，同时自己负责实现model和解析器，并在initModel和Parse两个类中增添自己的模块。
