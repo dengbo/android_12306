@@ -37,7 +37,7 @@ public class InitModel {
 		if (action.equalsIgnoreCase(StringPoolUtil.GET_CHECK_IMG)) {
 			reqNetDate = new ReqCheckImg();
 			reqNetDate.setMethod("GET");
-			reqNetDate.setUrl(f5CheckImgString);
+			reqNetDate.setUrl(getCheckImgString);
 			reqNetDate.setProtocol("https");
 		} else if (action.equalsIgnoreCase(StringPoolUtil.F5_CHECK_IMG)) {
 			reqNetDate = new ReqCheckImg();

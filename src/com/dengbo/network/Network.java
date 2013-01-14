@@ -2,6 +2,8 @@ package com.dengbo.network;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+//import java.io.FileNotFoundException;
+//import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -53,8 +55,11 @@ public class Network {
 		HttpURLConnection connection = null;
 		ByteArrayOutputStream outputStream = null;
 		try {
-			url.append("?");
-			url.append(param);
+			if(param != "")
+			{
+				url.append("?");
+				url.append(param);
+			}
 			connection = (HttpURLConnection) new URL(url.toString())
 					.openConnection();
 			connection.setRequestMethod("GET");
@@ -143,8 +148,11 @@ public class Network {
 		ByteArrayOutputStream outputStream = null;
 		HandleCAUtil.initTrustAllSSL();
 		try {
-			url.append("?");
-			url.append(param);
+			if(param != "")
+			{
+				url.append("?");
+				url.append(param);
+			}
 			Log.e("network url",url.toString());
 			connection = (HttpsURLConnection) new URL(url.toString())
 					.openConnection();
@@ -161,6 +169,18 @@ public class Network {
 				InputStream inputStream = connection.getInputStream();
 				outputStream = CommonUtil
 						.inputStreamToByteArrayOutputStream(inputStream);
+//				if(url.toString().equalsIgnoreCase("https://dynamic.12306.cn/otsweb/order/myOrderAction.do?method=init&showMessage=Y")){
+//				try {
+//					FileOutputStream outputStream2 = new FileOutputStream("/sdcard/test.html");
+//					byte[] b = new byte[1024];
+//					int n;
+//					while ((n = inputStream.read(b)) != -1) {
+//						outputStream2.write(b, 0, n);
+//					}
+//				} catch (FileNotFoundException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}}
 				inputStream.close();
 				break;
 			default:

@@ -52,6 +52,7 @@ public class HomeActivity extends BaseActivity {
 		startServiceIntent = new Intent(HomeActivity.this , RouterService.class);
 
 		IntentFilter filter = new IntentFilter();
+		filter.addAction(StringPoolUtil.GET_Order_TOKRN);
 		mDatareciever = new Datareciever();
 		registerReceiver(mDatareciever, filter);
 	}

@@ -15,8 +15,9 @@ public class ReqToken extends ReqNetDate{
 		// TODO Auto-generated method stub
 		//Accept	text/html, application/xhtml+xml, */*
 		super.initHeadParam();
-		headParamHashMap.put("Accept","text/html, application/xhtml+xml, */*");
-//		headParamHashMap.put("Accept-Encoding",	"gzip, deflate");
+		headParamHashMap.put("Accept",	"text/html, application/xhtml+xml, */*");
+		headParamHashMap.put("Accept-Encoding",	"gzip, deflate");
+		headParamHashMap.put("Referer",	"https://dynamic.12306.cn/otsweb/loginAction.do?method=login");
 	}
 
 //	//所有的子类重载该方法，调用initModel的register

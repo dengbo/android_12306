@@ -2,9 +2,12 @@ package com.dengbo.util;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import android.util.Log;
@@ -62,7 +65,13 @@ public class CommonUtil {
 
 	public static String byteArrayOutStreamToString(ByteArrayOutputStream outputStream) {
 		byte[] buf = outputStream.toByteArray();
-		return new String(buf);
+		try {
+			return new String(buf,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
+		}
 	}
 
 	public static String inputStreamToString(InputStream inputStream)
