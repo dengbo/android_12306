@@ -7,6 +7,7 @@ import com.dengbo.model.ReqLogin;
 import com.dengbo.model.ReqLoginToken;
 import com.dengbo.model.ReqNetDate;
 import com.dengbo.model.ReqOrderUnpaid;
+import com.dengbo.model.ReqQuery;
 import com.dengbo.model.ReqToken;
 import com.dengbo.util.StringPoolUtil;
 
@@ -21,6 +22,7 @@ public class InitModel {
 	static String yupiaoReqString = "http://dynamic.12306.cn/otsquery/query/queryRemanentTicketAction.do";
 	public static String getOrderTokenString = "https://dynamic.12306.cn/otsweb/order/myOrderAction.do?method=init&showMessage=Y";
 	static String orderUnpaidUrl = "http://dynamic.12306.cn/otsweb/myOrderAction.do";
+	static String queryString ="https://dynamic.12306.cn/otsweb/order/querySingleAction.do";
 
 	public static ReqNetDate initModel(String action, Bundle mBundle) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		ReqNetDate reqNetDate = null;
@@ -65,6 +67,13 @@ public class InitModel {
 			reqNetDate.setMethod("GET");
 			reqNetDate.setProtocol("https");
 			reqNetDate.setUrl(getOrderTokenString);
+		}
+		else if(action.equalsIgnoreCase(StringPoolUtil.QUERY_TICKET))
+		{
+			reqNetDate = new ReqQuery();
+			reqNetDate.setMethod("GET");
+			reqNetDate.setProtocol("https");
+			reqNetDate.setUrl(queryString);
 		}
 		reqNetDate.initHeadParam();
 		reqNetDate.initParam(mBundle);

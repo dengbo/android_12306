@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ligth_black"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -39,14 +38,14 @@
         <ImageButton
             android:id="@+id/query_change"
             android:layout_width="wrap_content"
-            android:layout_height="85dp"
+            android:layout_height="100dp"
             android:layout_centerVertical="true"
             android:src="@drawable/query_change" />
 
         <LinearLayout
             android:id="@+id/query_start_l"
             android:layout_width="wrap_content"
-            android:layout_height="47dp"
+            android:layout_height="55dp"
             android:layout_alignParentTop="true"
             android:layout_marginRight="15dp"
             android:layout_toRightOf="@id/query_change"
@@ -66,16 +65,20 @@
                 android:text="@string/query_start"
                 android:textSize="16sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/query_start"
                 android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/d_start"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/query_end_l"
             android:layout_width="wrap_content"
-            android:layout_height="47dp"
+            android:layout_height="55dp"
             android:layout_below="@id/query_start_l"
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
@@ -96,9 +99,13 @@
                 android:text="@string/query_end"
                 android:textSize="16sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/query_end"
                 android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/d_end"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </RelativeLayout>
@@ -106,7 +113,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:src="@drawable/line_black" />
 
     <LinearLayout
@@ -114,7 +123,7 @@
         android:layout_height="72dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/white_frame"
         android:orientation="vertical" >
 
@@ -148,7 +157,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:orientation="horizontal" >
 
             <TextView
@@ -177,7 +186,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="72dp"
+        android:layout_height="80dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="5dp"
@@ -204,6 +213,7 @@
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:text="@string/d_seat"
                 android:textSize="16sp" />
 
             <ImageView
@@ -232,6 +242,7 @@
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:text="@string/d_seat"
                 android:textSize="16sp" />
 
             <ImageView
@@ -246,7 +257,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
+
+        android:layout_marginTop="15dp"
         android:text="@string/query_hint" />
 
 </LinearLayout>

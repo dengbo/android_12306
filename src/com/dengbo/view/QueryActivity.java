@@ -3,7 +3,12 @@ package com.dengbo.view;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 
+import com.dengbo.adapter.QueryListAdapter;
+
+import android.R.integer;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
@@ -17,32 +22,42 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListPopupWindow;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class QueryActivity extends BaseActivity{
 
 	private Button backButton,queryButton;
-	private EditText query_startEditText,query_endEditText;
 	private TextView query_dateTextView,query_timeTextView,query_kindTextView,query_classTextView;
+	private TextView query_startTextView , query_endTextView;
 
 	private String[] query_timeStrings;
+	private String[] query_kindStrings;
+	private String[] query_classStrings;
 	private PopupWindow mTimeWindow;				//弹出时间选项
+	private LayoutInflater lay;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.query);
+
+		lay = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
 		backButton = (Button) findViewById(R.id.back);
 		queryButton = (Button) findViewById(R.id.query);
-		query_startEditText = (EditText) findViewById(R.id.query_start);
-		query_endEditText = (EditText) findViewById(R.id.query_end);
+		query_startTextView = (EditText) findViewById(R.id.query_start);
+		query_endTextView = (EditText) findViewById(R.id.query_end);
 		query_dateTextView = (TextView) findViewById(R.id.query_date);
 		query_timeTextView = (TextView) findViewById(R.id.query_time);
 		query_classTextView = (TextView) findViewById(R.id.query_class);
@@ -57,6 +72,8 @@ public class QueryActivity extends BaseActivity{
 		queryButton.setOnClickListener(queryClickListener);
 		Resources resources = getResources();
 		query_timeStrings = resources.getStringArray(R.array.query_time_array);
+		query_classStrings = resources.getStringArray(R.array.query_class_array);
+		query_kindStrings = resources.getStringArray(R.array.query_kind_array);
 		SimpleDateFormat mDateFormat=new SimpleDateFormat("yyyy-MM-dd");
 		String date=mDateFormat.format(new java.util.Date());
 		query_dateTextView.setText(date);
@@ -72,7 +89,7 @@ public class QueryActivity extends BaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			new DatePickerDialog(QueryActivity.this, mListener, Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
+			new DatePickerDialog(QueryActivity.this, mListener, Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH).show();
 		}
 	};
 	private OnDateSetListener mListener = new OnDateSetListener() {
@@ -97,35 +114,63 @@ public class QueryActivity extends BaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			LayoutInflater lay = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
 			View parent = lay.inflate(R.layout.query, null);
-			popAwindow(parent , lay);
+			popAwindow(parent, v , query_timeStrings , true);
 		}
 	};
 
-	private void popAwindow(View parent , LayoutInflater lay) {
+	private void popAwindow(View parent , final View thisViews ,String[] dataStrings , boolean isSingle) {
         if (mTimeWindow == null) {
-            View v = lay.inflate(R.layout.query_time_pop, null);
+            View v = lay.inflate(R.layout.query_pop, null);
+            Button mButton = null;
             //初始化listview，加载数据。
-            final ListView list=(ListView)v.findViewById(R.id.query_time_pop);
-            ArrayList<String> queryArrayList = new ArrayList<String>();
-			for(String item : query_timeStrings)
+            final ListView list=(ListView)v.findViewById(R.id.query_pop);
+            final ArrayList<String> queryArrayList = new ArrayList<String>();
+			for(String item : dataStrings)
 			{
 				queryArrayList.add(item);
 			}
-			ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(QueryActivity.this, android.R.layout.simple_expandable_list_item_1, queryArrayList);
-            list.setAdapter(mAdapter);
-            list.setItemsCanFocus(true);
-            list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-            list.setOnItemClickListener(new OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position,
-                        long id) {
-                    String time =  (String)list.getItemAtPosition(position);
-                    mTimeWindow.dismiss();
-                }
-            } );
+            if(isSingle)
+            {
+            	 ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(QueryActivity.this, android.R.layout.simple_expandable_list_item_1);
+            	 list.setOnItemClickListener(new OnItemClickListener() {
+                     @Override
+                     public void onItemClick(AdapterView<?> parent, View view, int position,
+                             long id) {
+                         String data =  (String) list.getItemAtPosition(position);
+                         ((TextView) thisViews).setText(data);
+                         mTimeWindow.dismiss();
+                     }
+                 } );
+            	 list.setAdapter(mAdapter);
+            }
+            else {
+            	final QueryListAdapter mAdapter = new QueryListAdapter(QueryActivity.this, queryArrayList);
+            	mButton = (Button)v.findViewById(R.id.query_pop_button);
+            	mButton.setOnClickListener(new OnClickListener() {
 
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						StringBuilder dataBuilder = new StringBuilder();
+						List<Boolean> mList = mAdapter.mChecked;
+						for(int i = 0;i<mList.size();i++)
+						{
+							if(mList.get(i))
+							{
+								dataBuilder.append(queryArrayList.get(i));
+								dataBuilder.append(",");
+							}
+						}
+						((TextView) thisViews).setText(dataBuilder.toString());
+						mTimeWindow.dismiss();
+					}
+				});
+            	list.setAdapter(mAdapter);
+			}
+
+            list.setItemsCanFocus(true);
             mTimeWindow = new PopupWindow(v, 500,260);
         }
 
@@ -157,6 +202,7 @@ public class QueryActivity extends BaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			Bundle mBundle = new Bundle();
 
 		}
 	};

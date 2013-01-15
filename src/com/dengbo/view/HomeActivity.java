@@ -1,5 +1,6 @@
 package com.dengbo.view;
 
+import com.dengbo.app.App;
 import com.dengbo.control.InitModel;
 import com.dengbo.control.RouterService;
 import com.dengbo.util.StringPoolUtil;
@@ -20,7 +21,6 @@ public class HomeActivity extends BaseActivity {
 	private LinearLayout l1, l2, l3, l4, l5, l6, l7, l8, l9, l10;
 
 	private Datareciever mDatareciever;
-	private Intent startServiceIntent ;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,6 @@ public class HomeActivity extends BaseActivity {
 		l9.setOnClickListener(home_9_listener);
 		l10.setOnClickListener(home_10_listener);
 
-		startServiceIntent = new Intent(HomeActivity.this , RouterService.class);
 
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(StringPoolUtil.GET_Order_TOKRN);
@@ -97,11 +96,11 @@ public class HomeActivity extends BaseActivity {
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			//先取token，再跳转
-			startServiceIntent.setAction(StringPoolUtil.GET_Order_TOKRN);
+			App.mIntent.setAction(StringPoolUtil.GET_Order_TOKRN);
 			Bundle mBundle = new Bundle();
 			mBundle.putString(StringPoolUtil.ORDER_TOKEN, InitModel.getOrderTokenString);
-			startServiceIntent.putExtras(mBundle);
-			startService(startServiceIntent);
+			App.mIntent.putExtras(mBundle);
+			startService(App.mIntent);
 		}
 	};
 

@@ -13,6 +13,7 @@ public interface StringPoolUtil {
 	String SEND_YUPIAOREQ = "com.dengbo.view.sendYupiaoReq";
 	String CHECK_ORDER_UNPAID = "com.dengbo.view.checkOrderUnpaid";
 	String GET_Order_TOKRN = "com.dengbo.view.getOrderToken";
+	String QUERY_TICKET = "com.dengbo.view.queryTicket";
 
 
 

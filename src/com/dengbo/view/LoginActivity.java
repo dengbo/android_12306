@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dengbo.app.App;
 import com.dengbo.control.InitCookieService;
 import com.dengbo.control.RouterService;
 import com.dengbo.util.CommonUtil;
@@ -36,8 +37,7 @@ public class LoginActivity extends BaseActivity {
 	private ImageView checkImageView;
 	private TextView loginSignTextView;
 
-	// 启动主service的intent
-	private Intent mIntent;
+
 
 	// 启动获取cookie的service
 	private Intent cookieIntent;
@@ -163,8 +163,8 @@ public class LoginActivity extends BaseActivity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			mIntent.setAction(StringPoolUtil.F5_CHECK_IMG);
-			startService(mIntent);
+			App.mIntent.setAction(StringPoolUtil.F5_CHECK_IMG);
+			startService(App.mIntent);
 		}
 	};
 	// 点击登录
@@ -175,8 +175,8 @@ public class LoginActivity extends BaseActivity {
 			// TODO Auto-generated method stub
 			if (CommonUtil.COOKIE != "") {
 				Log.v(LOG, "login");
-				mIntent.setAction(StringPoolUtil.SEND_LOGIN_AUTH);
-				startService(mIntent);
+				App.mIntent.setAction(StringPoolUtil.SEND_LOGIN_AUTH);
+				startService(App.mIntent);
 			}
 			else {
 				NotifyExceptionUtil.notify(LoginActivity.this, getResources().getString(R.string.login_wait));
@@ -217,7 +217,7 @@ public class LoginActivity extends BaseActivity {
 					checkImageView.setImageBitmap(mBitmap);
 				} else if (action
 						.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN_AUTH)) {// 处理获取到autho后，发送请求登录信息
-					mIntent.setAction(StringPoolUtil.SEND_LOGIN);
+					App.mIntent.setAction(StringPoolUtil.SEND_LOGIN);
 					String[] dataStrings = new String[4];
 					dataStrings[0] = "dengbodb@sina.com";//userEditText.getText().toString();
 					dataStrings[1] = "03170822l";//passwdEditText.getText().toString();
@@ -226,8 +226,8 @@ public class LoginActivity extends BaseActivity {
 							.getString(StringPoolUtil.LOGIN_RAND);
 					Bundle mBundles = new Bundle();
 					mBundles.putStringArray(StringPoolUtil.LOGIN, dataStrings);
-					mIntent.putExtras(mBundles);
-					startService(mIntent);
+					App.mIntent.putExtras(mBundles);
+					startService(App.mIntent);
 					NotifyExceptionUtil.notify(LoginActivity.this, getResources().getString(R.string.login_ing));
 				} else if (action.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN)) {// 处理登录后
 					boolean isError = mBundle.getBoolean(StringPoolUtil.ERROR);
@@ -259,9 +259,9 @@ public class LoginActivity extends BaseActivity {
 					Log.v(LOG, "get the cookie");
 					stopService(cookieIntent);
 					// 获取验证码
-					mIntent = new Intent(LoginActivity.this, RouterService.class);
-					mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
-					startService(mIntent);
+					App.mIntent = new Intent(LoginActivity.this, RouterService.class);
+					App.mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
+					startService(App.mIntent);
 				} else if (action
 						.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
 					Log.d("mark", "网络状态已经改变");
@@ -273,10 +273,10 @@ public class LoginActivity extends BaseActivity {
 						cookieIntent.setAction(StringPoolUtil.GET_COOKIE);
 						startService(cookieIntent);
 						// 获取验证码
-						mIntent = new Intent(LoginActivity.this,
+						App.mIntent = new Intent(LoginActivity.this,
 								RouterService.class);
-						mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
-						startService(mIntent);
+						App.mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
+						startService(App.mIntent);
 						String name = info.getTypeName();
 						Log.d("mark", "当前网络名称：" + name);
 					}

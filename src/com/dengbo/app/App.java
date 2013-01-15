@@ -13,12 +13,15 @@ import com.dengbo.model.ReqYupiao;
 import com.dengbo.util.DbHelper;
 
 import android.app.Application;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 
 public class App extends Application{
 
 	//共享程序数据
 //	public static HashMap<String, HashMap<String, String>> modelHashMap , parseHashMap;
+	// 启动主service的intent
+	public static Intent mIntent;
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub

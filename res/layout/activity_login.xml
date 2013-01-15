@@ -95,10 +95,10 @@
                 android:hint="@string/login_check_hint" />
             <ImageView
                 android:id="@+id/login_check_img"
-                android:layout_width="45dp"
+                android:layout_width="55dp"
                 android:layout_toRightOf="@id/login_check_edit"
                 android:layout_below="@id/login_line_2"
-                android:layout_height="45dp" />
+                android:layout_height="60dp" />
     </RelativeLayout>
     <Button
         android:background="@drawable/blue_btn"
