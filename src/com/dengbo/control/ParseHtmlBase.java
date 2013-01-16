@@ -10,9 +10,10 @@ import com.dengbo.util.CommonUtil;
 
 public abstract class ParseHtmlBase extends ParseBase{
 	protected Document document;
+	protected String htmlString;
 	public ParseHtmlBase(ByteArrayOutputStream outputStream)
 	{
-		String htmlString = CommonUtil.byteArrayOutStreamToString(outputStream);
+		htmlString = CommonUtil.byteArrayOutStreamToString(outputStream);
 		document = Jsoup.parse(htmlString);
 	}
 	protected Elements getElementBySelector(String cssQuery) {

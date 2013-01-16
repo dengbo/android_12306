@@ -98,7 +98,16 @@
                 android:layout_width="55dp"
                 android:layout_toRightOf="@id/login_check_edit"
                 android:layout_below="@id/login_line_2"
+                android:visibility="gone"
                 android:layout_height="60dp" />
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_toRightOf="@id/login_check_edit"
+                android:layout_below="@id/login_line_2"
+                android:id="@+id/bar"
+                />
     </RelativeLayout>
     <Button
         android:background="@drawable/blue_btn"

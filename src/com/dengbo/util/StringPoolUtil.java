@@ -54,4 +54,23 @@ public interface StringPoolUtil {
 
 	// home 界面
 	String ORDER_TOKEN = "orderToken"; // 请求订单时获取token
+
+	//query页面
+	String QUERY_START = "queryStart";
+	String QUERY_END = "queryEnd";
+	String QUERY_DATE = "queryDate";
+	String QUERY_TIME = "queryTime";
+	String QUERY_KIND = "queryKind";
+	String QUERY_CLASS = "queryClass";
+
+	String QUERY_RESULT = "queryResult";
+
+	//query result
+	String TRAIN = "train";
+	String START = "start";
+	String END = "end";
+	String TIME = "time";
+	String NUM = "num";
+	String IMG_S ="startImg";
+	String IMG_E ="endImg";
 }

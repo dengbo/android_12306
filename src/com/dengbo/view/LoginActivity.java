@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dengbo.app.App;
@@ -36,7 +37,7 @@ public class LoginActivity extends BaseActivity {
 	private Button loginButton;
 	private ImageView checkImageView;
 	private TextView loginSignTextView;
-
+	private ProgressBar bar;
 
 
 	// 启动获取cookie的service
@@ -74,6 +75,7 @@ public class LoginActivity extends BaseActivity {
 		checkImageView = (ImageView) findViewById(R.id.login_check_img);
 		loginButton = (Button) findViewById(R.id.login_btn);
 		loginSignTextView = (TextView) findViewById(R.id.login_sign);
+		bar =(ProgressBar)findViewById(R.id.bar);
 
 		userEditText.setFocusable(true);
 		userEditText.requestFocus();
@@ -81,6 +83,7 @@ public class LoginActivity extends BaseActivity {
 		loginButton.setOnClickListener(loginClickListener);
 		checkImageView.setOnClickListener(refreshClickListener);
 		loginSignTextView.setOnClickListener(signClickListener);
+		bar.setIndeterminate(true);
 
 		if (isOpenNetwork() == true) {
 			cookieIntent = new Intent(LoginActivity.this,
@@ -163,6 +166,8 @@ public class LoginActivity extends BaseActivity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			bar.setVisibility(View.VISIBLE);
+			checkImageView.setVisibility(View.GONE);
 			App.mIntent.setAction(StringPoolUtil.F5_CHECK_IMG);
 			startService(App.mIntent);
 		}
@@ -209,18 +214,22 @@ public class LoginActivity extends BaseActivity {
 					Bitmap mBitmap = BitmapFactory.decodeByteArray(data, 0,
 							data.length);
 					checkImageView.setImageBitmap(mBitmap);
+					bar.setVisibility(View.GONE);
+					checkImageView.setVisibility(View.VISIBLE);
 				} else if (action.equalsIgnoreCase(StringPoolUtil.F5_CHECK_IMG)) {// 刷新验证码
 					byte[] data = mBundle
 							.getByteArray(StringPoolUtil.RESP_CHECK);
 					Bitmap mBitmap = BitmapFactory.decodeByteArray(data, 0,
 							data.length);
 					checkImageView.setImageBitmap(mBitmap);
+					bar.setVisibility(View.GONE);
+					checkImageView.setVisibility(View.VISIBLE);
 				} else if (action
 						.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN_AUTH)) {// 处理获取到autho后，发送请求登录信息
 					App.mIntent.setAction(StringPoolUtil.SEND_LOGIN);
 					String[] dataStrings = new String[4];
-					dataStrings[0] = "dengbodb@sina.com";//userEditText.getText().toString();
-					dataStrings[1] = "03170822l";//passwdEditText.getText().toString();
+					dataStrings[0] = userEditText.getText().toString();
+					dataStrings[1] = passwdEditText.getText().toString();
 					dataStrings[2] = checkEditText.getText().toString();
 					dataStrings[3] = mBundle
 							.getString(StringPoolUtil.LOGIN_RAND);
@@ -259,6 +268,8 @@ public class LoginActivity extends BaseActivity {
 					Log.v(LOG, "get the cookie");
 					stopService(cookieIntent);
 					// 获取验证码
+					bar.setVisibility(View.VISIBLE);
+					checkImageView.setVisibility(View.GONE);
 					App.mIntent = new Intent(LoginActivity.this, RouterService.class);
 					App.mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
 					startService(App.mIntent);

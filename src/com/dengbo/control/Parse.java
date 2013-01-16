@@ -7,7 +7,7 @@ import com.dengbo.util.StringPoolUtil;
 import android.os.Bundle;
 
 public class Parse {
-	public Bundle parseStream(String actionString , ByteArrayOutputStream stream)
+	public Bundle parseStream(String actionString , ByteArrayOutputStream stream) throws Exception
 	{
 		if (actionString.equalsIgnoreCase(StringPoolUtil.GET_CHECK_IMG)) {
 			return new ParseCheckImg().parse(stream);
@@ -26,6 +26,10 @@ public class Parse {
 		}
 		else if(actionString.equalsIgnoreCase(StringPoolUtil.GET_Order_TOKRN)){
 			return new ParseToken(stream).parse(stream);
+		}
+		else if(actionString.equalsIgnoreCase(StringPoolUtil.QUERY_TICKET))
+		{
+			return new ParseQuery(stream).parse(stream);
 		}
 		return null;
 	}

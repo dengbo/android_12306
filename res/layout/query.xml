@@ -22,6 +22,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="@string/home_head"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <Button
@@ -32,7 +33,7 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <ImageButton
@@ -119,7 +120,7 @@
         android:src="@drawable/line_black" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -127,10 +128,9 @@
         android:background="@drawable/white_frame"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,6 +138,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/query_date"
+                android:id="@+id/query_date_1"
                 android:textSize="16sp" />
 
             <TextView
@@ -146,19 +147,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/query_date_1"
                 android:layout_weight="1"
                 android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
                 android:src="@drawable/trig" />
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:orientation="horizontal" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -166,6 +169,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/query_time"
+                android:id="@+id/query_time_1"
                 android:textSize="16sp" />
 
             <TextView
@@ -174,18 +178,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/query_time_1"
                 android:layout_weight="1"
                 android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
                 android:src="@drawable/trig" />
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -193,10 +200,9 @@
         android:background="@drawable/white_frame"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -204,26 +210,30 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/query_kind"
+                android:id="@+id/query_kind_1"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/query_kind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="48dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:layout_toRightOf="@id/query_kind_1"
                 android:text="@string/d_seat"
                 android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
                 android:src="@drawable/trig" />
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
@@ -233,6 +243,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/query_class"
+                android:id="@+id/query_class_1"
                 android:textSize="16sp" />
 
             <TextView
@@ -243,13 +254,16 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="@string/d_seat"
+                android:layout_toRightOf="@id/query_class_1"
                 android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
                 android:src="@drawable/trig" />
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
     <TextView

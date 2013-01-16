@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/home_head"
+            android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
     <ImageView

@@ -50,11 +50,11 @@
 	<string name="d_seat">全部</string>
 	<string name="query_hint">每次购买单张车票成功的概率更高，购票不晚于开车前两小时，提前12天可以购票，每个车站第一天的开售时间不一样，如需抢票，请提前测试</string>
 	<string-array name="query_time_array">
-　　        <item>00:00&#8211;24:00</item>
-　　        <item>00:00&#8211;06:00</item>
-　　        <item>06:00&#8211;12:00</item>
-　　        <item>12:00&#8211;18:00</item>
-　　        <item>18:00&#8211;24:00</item>
+　　        <item>00:00--24:00</item>
+　　        <item>00:00--06:00</item>
+　　        <item>06:00--12:00</item>
+　　        <item>12:00--18:00</item>
+　　        <item>18:00--24:00</item>
 　　    </string-array>
 	<string-array name="query_kind_array">
 　　        <item>全部</item>
@@ -63,6 +63,14 @@
 　　        <item>T字头</item>
 　　        <item>K字头</item>
 	 <item>其他</item>
+　　    </string-array>
+	<string-array name="query_kind_array_l">
+　　        <item>QB</item>
+　　        <item>D</item>
+　　        <item>Z</item>
+　　        <item>T</item>
+　　        <item>K</item>
+	 <item>QT</item>
 　　    </string-array>
 	<string-array name="query_class_array">
 	 <item>全部</item>
@@ -73,4 +81,6 @@
 　　    </string-array>
 	<string name ="d_start">北京</string>
 	<string name = "d_end">武汉</string>
+	<!-- query result页面  -->
+	<string name="query_result_title">车票查询</string>
 </resources>

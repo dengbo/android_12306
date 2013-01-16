@@ -108,7 +108,14 @@ public class RouterService extends Service {
 				return;
 			}
 			Parse mParse = new Parse();
-			Bundle respBundle = mParse.parseStream(actionString, result);
+			Bundle respBundle = null;
+			try {
+				respBundle = mParse.parseStream(actionString, result);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				NotifyExceptionUtil.notify(RouterService.this, e1);
+				return;
+			}
 			try {
 				result.close();
 			} catch (IOException e) {
