@@ -32,6 +32,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 
 public class QueryActivity extends BaseActivity {
@@ -193,7 +194,6 @@ public class QueryActivity extends BaseActivity {
 	private void popAwindow(final View thisViews, String[] dataStrings,
 			boolean isSingle) {
 		View v = lay.inflate(R.layout.query_pop, null);
-		Button mButton = (Button) v.findViewById(R.id.query_pop_button);
 		final ListView list = (ListView) v.findViewById(R.id.query_pop);
 		final ArrayList<String> queryArrayList = new ArrayList<String>();
 		for (String item : dataStrings) {
@@ -214,14 +214,15 @@ public class QueryActivity extends BaseActivity {
 				}
 			});
 			list.setAdapter(mAdapter);
-			mButton.setVisibility(View.GONE);
+			mTimeWindow = new PopupWindow(v, 500, 260);
 		} else {
 			final QueryListAdapter mAdapter = new QueryListAdapter(
 					QueryActivity.this, queryArrayList);
-			mButton.setOnClickListener(new OnClickListener() {
+			mTimeWindow = new PopupWindow(v, 500, 260);
+			mTimeWindow.setOnDismissListener(new OnDismissListener() {
 
 				@Override
-				public void onClick(View v) {
+				public void onDismiss() {
 					// TODO Auto-generated method stub
 					StringBuilder dataBuilder = new StringBuilder();
 					kindBuilder = new StringBuilder();
@@ -241,7 +242,6 @@ public class QueryActivity extends BaseActivity {
 		}
 
 		list.setItemsCanFocus(true);
-		mTimeWindow = new PopupWindow(v, 500, 260);
 		mTimeWindow.setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.popup));
 		mTimeWindow.setOutsideTouchable(true);

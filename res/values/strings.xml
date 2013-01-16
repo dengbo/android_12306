@@ -81,6 +81,7 @@
 　　    </string-array>
 	<string name ="d_start">北京</string>
 	<string name = "d_end">武汉</string>
+	<string name="comfirm">确定</string>
 	<!-- query result页面  -->
 	<string name="query_result_title">车票查询</string>
 </resources>

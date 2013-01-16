@@ -11,9 +11,4 @@
     	android:divider="@color/light_blue"
 		android:dividerHeight="1dip"
         ></ListView>
-    <Button
-        android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:id="@+id/query_pop_button"
-        />
 </LinearLayout>

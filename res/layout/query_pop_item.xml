@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">"
+    android:layout_height="match_parent">
 	<TextView
 	    android:textSize="16sp"
 	    android:layout_width="wrap_content"
@@ -11,8 +10,9 @@
 	    android:layout_weight="1"
 	    />
 	<CheckBox
+	    android:layout_alignParentRight="true"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:id="@+id/query_item_check"
 	    />
-</LinearLayout>
+</RelativeLayout>
