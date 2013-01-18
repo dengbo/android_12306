@@ -2,6 +2,7 @@ package com.dengbo.control;
 
 import android.os.Bundle;
 
+import com.dengbo.model.ReqBook;
 import com.dengbo.model.ReqCheckImg;
 import com.dengbo.model.ReqLogin;
 import com.dengbo.model.ReqLoginToken;
@@ -23,6 +24,7 @@ public class InitModel {
 	public static String getOrderTokenString = "https://dynamic.12306.cn/otsweb/order/myOrderAction.do?method=init&showMessage=Y";
 	static String orderUnpaidUrl = "http://dynamic.12306.cn/otsweb/myOrderAction.do";
 	static String queryString ="https://dynamic.12306.cn/otsweb/order/querySingleAction.do";
+	static String bookString = "";
 
 	public static ReqNetDate initModel(String action, Bundle mBundle) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		ReqNetDate reqNetDate = null;
@@ -74,6 +76,13 @@ public class InitModel {
 			reqNetDate.setMethod("GET");
 			reqNetDate.setProtocol("https");
 			reqNetDate.setUrl(queryString);
+		}
+		else if(action.equalsIgnoreCase(StringPoolUtil.QUERY_BOOK))
+		{
+			reqNetDate = new ReqBook();
+			reqNetDate.setMethod("PUT");
+			reqNetDate.setProtocol("https");
+			reqNetDate.setUrl(bookString);
 		}
 		reqNetDate.initHeadParam();
 		reqNetDate.initParam(mBundle);
