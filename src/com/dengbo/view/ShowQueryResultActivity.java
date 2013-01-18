@@ -3,9 +3,14 @@ package com.dengbo.view;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.dengbo.app.App;
+import com.dengbo.util.NotifyExceptionUtil;
 import com.dengbo.util.StringPoolUtil;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,11 +24,13 @@ import android.widget.TextView;
 public class ShowQueryResultActivity extends BaseActivity{
 
 	private String result;
-	private String start , end ,date;
+	private String start , end ,date,time,kind;
+	private ArrayList<String> orderLinkList ;
 	private ListView mListView;
 	private Button backButton;
 	private TextView dateTextView,startTextView,endTextView;
 	private ArrayList<HashMap<String, Object>> mList;
+	private Recieve recieve;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -36,16 +43,24 @@ public class ShowQueryResultActivity extends BaseActivity{
 		backButton = (Button)findViewById(R.id.query_back);
 
 		Bundle mBundle = getIntent().getExtras();
+		orderLinkList = mBundle.getStringArrayList(StringPoolUtil.QUERY_ORDER_LINK);
 		result = mBundle.getString(StringPoolUtil.QUERY_RESULT);
 		start = mBundle.getString(StringPoolUtil.QUERY_START);
 		end = mBundle.getString(StringPoolUtil.QUERY_END);
 		date = mBundle.getString(StringPoolUtil.QUERY_DATE);
+		time = mBundle.getString(StringPoolUtil.QUERY_TIME);
+		kind = mBundle.getString(StringPoolUtil.QUERY_KIND);
 
 		dateTextView.setText(date);
 		startTextView.setText(start);
 		endTextView.setText(end);
 		backButton.setOnClickListener(backClickListener);
 		initListView();
+
+		recieve = new Recieve();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(StringPoolUtil.QUERY_BOOK);
+		registerReceiver(recieve, filter);
 	}
 
 	private OnClickListener backClickListener = new OnClickListener() {
@@ -79,11 +94,11 @@ public class ShowQueryResultActivity extends BaseActivity{
 			mBuilder.append("商务座：").append(item[4]).append(",");
 			mBuilder.append("特等座：").append(item[5]).append(",");
 			mBuilder.append("一等座：").append(item[6]).append(",");
-			mBuilder.append("二等座：").append(item[7]).append("\n");
+			mBuilder.append("二等座：").append(item[7]).append(",");
 			mBuilder.append("高级软卧：").append(item[8]).append(",");
 			mBuilder.append("软卧：").append(item[9]).append(",");
 			mBuilder.append("硬卧：").append(item[10]).append(",");
-			mBuilder.append("软座：").append(item[11]).append("\n");
+			mBuilder.append("软座：").append(item[11]).append(",");
 			mBuilder.append("硬座：").append(item[12]).append(",");
 			mBuilder.append("无座：").append(item[13]).append(",");
 			mBuilder.append("其他：").append(item[14]);
@@ -105,13 +120,18 @@ public class ShowQueryResultActivity extends BaseActivity{
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
 			// TODO Auto-generated method stub
-			HashMap<String, Object> map = mList.get(arg2);
-			Intent mIntent = new Intent(ShowQueryResultActivity.this , BookActivity.class);
-			Bundle mBundle = new Bundle();
-			mBundle.putSerializable(StringPoolUtil.QUERY_RESULT, map);
-			mIntent.putExtras(mBundle);
-			startActivity(mIntent);
-			ShowQueryResultActivity.this.finish();
+			String linkString = orderLinkList.get(arg2);
+			if(linkString.equals(""))
+				NotifyExceptionUtil.notify(ShowQueryResultActivity.this , getResources().getString(R.string.no_ticket_hint));
+			else {
+				Intent mIntent = App.mIntent;
+				StringBuilder mBuilder = new StringBuilder();
+				mBuilder.append(linkString).append("#").append(kind).append("#").append(time)
+				.append("#").append(date);
+				mIntent.putExtra(StringPoolUtil.QUERY_ORDER_LINK, mBuilder.toString());
+				mIntent.setAction(StringPoolUtil.QUERY_BOOK);
+				startService(mIntent);
+			}
 		}
 	};
 
@@ -151,6 +171,23 @@ public class ShowQueryResultActivity extends BaseActivity{
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		unregisterReceiver(recieve);
 	}
+	private class Recieve extends BroadcastReceiver
+	{
 
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			String acton = intent.getAction();
+			if (acton.equals(StringPoolUtil.QUERY_BOOK)) {
+				Intent mIntent = new Intent(ShowQueryResultActivity.this , BookActivity.class);
+				Bundle mBundle = new Bundle();
+				mIntent.putExtras(mBundle);
+				startActivity(mIntent);
+				ShowQueryResultActivity.this.finish();
+			}
+		}
+
+	}
 }

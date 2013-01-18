@@ -29,7 +29,7 @@ public class Parse {
 		}
 		else if(actionString.equalsIgnoreCase(StringPoolUtil.QUERY_TICKET))
 		{
-			return new ParseQuery(stream).parse(stream);
+			return new ParseQuery().parse(stream);
 		}
 		return null;
 	}

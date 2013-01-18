@@ -84,4 +84,8 @@
 	<string name="comfirm">确定</string>
 	<!-- query result页面  -->
 	<string name="query_result_title">车票查询</string>
+	<string name="no_ticket_hint">已经无法预订</string>
+	<!-- book页面  -->
+	<string name="cancel">取消</string>
+	<string name="book">提交订单</string>
 </resources>

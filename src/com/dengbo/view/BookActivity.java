@@ -16,7 +16,6 @@ public class BookActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.book);
-		mTextView = (TextView) findViewById(R.id.test);
 		Bundle mBundle =  getIntent().getExtras();
 		if(mBundle != null)
 			resultHashMap = (HashMap<String, Object>)mBundle.getSerializable(StringPoolUtil.QUERY_RESULT);

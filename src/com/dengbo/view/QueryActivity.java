@@ -314,16 +314,16 @@ public class QueryActivity extends BaseActivity {
 			String action = intent.getAction();
 			if(action.equalsIgnoreCase(StringPoolUtil.QUERY_TICKET))
 			{
-				String result = intent.getExtras().getString(StringPoolUtil.QUERY_RESULT);
+				Bundle mBundle = intent.getExtras();
 				String start = query_startTextView.getText().toString();
 				String end = query_endTextView.getText().toString();
 				String date = query_dateTextView.getText().toString();
 				Intent mIntent = new Intent(QueryActivity.this , ShowQueryResultActivity.class);
-				Bundle mBundle = new Bundle();
-				mBundle.putString(StringPoolUtil.QUERY_RESULT, result);
 				mBundle.putString(StringPoolUtil.QUERY_START, start);
 				mBundle.putString(StringPoolUtil.QUERY_END, end);
 				mBundle.putString(StringPoolUtil.QUERY_DATE, date);
+				mBundle.putString(StringPoolUtil.QUERY_TIME, query_timeTextView.getText().toString());
+				mBundle.putString(StringPoolUtil.QUERY_KIND, kindBuilder.toString());
 				mIntent.putExtras(mBundle);
 				startActivity(mIntent);
 				QueryActivity.this.finish();

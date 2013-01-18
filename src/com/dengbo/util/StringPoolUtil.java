@@ -14,6 +14,7 @@ public interface StringPoolUtil {
 	String CHECK_ORDER_UNPAID = "com.dengbo.view.checkOrderUnpaid";
 	String GET_Order_TOKRN = "com.dengbo.view.getOrderToken";
 	String QUERY_TICKET = "com.dengbo.view.queryTicket";
+	String QUERY_BOOK = "com.dengbo.view.queryBook";
 
 
 
@@ -64,6 +65,7 @@ public interface StringPoolUtil {
 	String QUERY_CLASS = "queryClass";
 
 	String QUERY_RESULT = "queryResult";
+	String QUERY_ORDER_LINK = "queryOrderLink";
 
 	//query result
 	String TRAIN = "train";
