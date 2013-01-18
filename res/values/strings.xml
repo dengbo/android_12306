@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">android_12306</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
@@ -49,6 +48,43 @@
 	<string name="query_class">席别</string>
 	<string name="d_seat">全部</string>
 	<string name="query_hint">每次购买单张车票成功的概率更高，购票不晚于开车前两小时，提前12天可以购票，每个车站第一天的开售时间不一样，如需抢票，请提前测试</string>
+
+	
+	<!-- 注册页面 -->
+	<string name="register">注册</string>
+	<string name="reg_student">学生注册</string>
+	<string name="reg_student_warming">暂不支持学生用户注册，点击</string>
+	<string name="reg_basic_info">基本信息</string>
+	<string name="reg_username">用\t户  名：</string>
+	<string name="reg_username_hint">6-30位(字母,数字均可)</string>
+	<string name="reg_password">密\t\t  码：</string>
+	<string name="reg_password_hint">至少6位(字母,数字均可)</string>
+	<string name="reg_password_verify">确认密码：</string>
+	<string name="reg_password_verify_hint">请再次输入密码</string>
+	<string name="reg_qurey_passwrod">查询密码：</string>
+	<string name="reg_qurey_passwrod_hint">6位语音数字查询密码：</string>
+	<string name="reg_qurey_passwrod_verify_hint">请再次输入查询密码</string>
+	<string name="reg_checkcode">验\t证  码：</string>
+	<string name="reg_checkcode_hint">点击可刷新验证码</string>
+	
+	<string name="reg_contact_way">联系方式</string>
+	<string name="reg_moblie">手机号码：</string>
+	<string name="reg_moblie_hint">接受订票信息</string>
+	<string name="reg_email">电子邮件：</string>
+	<string name="reg_email_hint">激活账号，接收订单信息</string>
+	
+	<string name="reg_person_info">个人信息</string>
+	<string name="reg_name">姓\t\t名：</string>
+	<string name="reg_name_hint">请输入真实姓名</string>
+	<string name="reg_sex">性\t\t别：</string>
+	<string name="reg_sex_male">男</string>
+	<string name="reg_sex_female">女</string>
+	<string name="reg_dingested_birth">出身日期：</string>
+	<string name="reg_certificate_type">证件类型：</string>
+	<string name="reg_cerfificate_num">证件号码：</string>
+	<string name="reg_passenger_type">旅客类型：</string>
+	<string name="reg_help_info">*如有身份信息重复，请去12306网站查看帮助第16条</string>
+
 	<string-array name="query_time_array">
 　　        <item>00:00--24:00</item>
 　　        <item>00:00--06:00</item>
@@ -84,4 +120,5 @@
 	<string name="comfirm">确定</string>
 	<!-- query result页面  -->
 	<string name="query_result_title">车票查询</string>
+
 </resources>
