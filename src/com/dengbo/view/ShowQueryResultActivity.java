@@ -183,6 +183,7 @@ public class ShowQueryResultActivity extends BaseActivity{
 			if (acton.equals(StringPoolUtil.QUERY_BOOK)) {
 				Intent mIntent = new Intent(ShowQueryResultActivity.this , BookActivity.class);
 				Bundle mBundle = new Bundle();
+				mBundle.putString(StringPoolUtil.BOOK, intent.getExtras().getString(StringPoolUtil.BOOK));
 				mIntent.putExtras(mBundle);
 				startActivity(mIntent);
 				ShowQueryResultActivity.this.finish();

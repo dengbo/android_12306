@@ -86,9 +86,18 @@
 	<string name="query_result_title">车票查询</string>
 	<string name="no_ticket_hint">已经无法预订</string>
 	<!-- book页面  -->
+	<string name="book_title">订单</string>
 	<string name="cancel">取消</string>
 	<string name="book">提交订单</string>
-
+	<string name="book_train">车次</string>
+	<string name="book_date">日期</string>
+	<string name="book_time">时间</string>
+	<string name="book_class">席别</string>
+	<string name="book_check">验证码</string>
+	<string name="book_passager">乘客信息</string>
+	<string name="book_add_passager">添加乘客</string>
+	<string name="book_hint_1">●购买单张车票成功率更高</string>
+	<string name="book_hint_2">●请在提交前仔细核对信息，如果一天内取消订单三次则不能再订票</string>
 		<!-- 注册页面 -->
 	<string name="register">注册</string>
 	<string name="reg_student">学生注册</string>

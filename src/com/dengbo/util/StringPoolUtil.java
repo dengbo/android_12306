@@ -15,6 +15,11 @@ public interface StringPoolUtil {
 	String GET_Order_TOKRN = "com.dengbo.view.getOrderToken";
 	String QUERY_TICKET = "com.dengbo.view.queryTicket";
 	String QUERY_BOOK = "com.dengbo.view.queryBook";
+	String SUB_BOOK ="com.dengbo.view.subBook";
+	String BOOK_IMG = "com.dengbo.view.bookImg";
+	String F5_BOOK_IMG = "com.dengbo.view.F5BookImg";
+	String ADD_PASSAGER = "com.dengbo.view.addPassager";
+	String READ_PASSAGER ="com.dengbo.view.readPassager";
 
 
 
@@ -75,4 +80,7 @@ public interface StringPoolUtil {
 	String NUM = "num";
 	String IMG_S ="startImg";
 	String IMG_E ="endImg";
+
+	//book
+	String BOOK = "book";
 }

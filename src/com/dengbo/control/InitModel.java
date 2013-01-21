@@ -3,28 +3,34 @@ package com.dengbo.control;
 import android.os.Bundle;
 
 import com.dengbo.model.ReqBook;
+import com.dengbo.model.ReqBookCheckImg;
 import com.dengbo.model.ReqCheckImg;
 import com.dengbo.model.ReqLogin;
 import com.dengbo.model.ReqLoginToken;
 import com.dengbo.model.ReqNetDate;
 import com.dengbo.model.ReqOrderUnpaid;
+import com.dengbo.model.ReqPassager;
 import com.dengbo.model.ReqQuery;
 import com.dengbo.model.ReqToken;
 import com.dengbo.util.StringPoolUtil;
 
 public class InitModel {
 	// 所有的url
-	static String initCookieString = "https://dynamic.12306.cn/otsweb/";
-	static String getCheckImgString = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=sjrand";
-	static String f5CheckImgString = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=sjrand&"
+	private static String initCookieString = "https://dynamic.12306.cn/otsweb/";
+	private static String getCheckImgString = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=sjrand";
+	private static String f5CheckImgString = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=sjrand&"
 			+ Math.random();
-	static String loginString = "https://dynamic.12306.cn/otsweb/loginAction.do?method=login";
-	static String loginAuthString = "https://dynamic.12306.cn/otsweb/loginAction.do?method=loginAysnSuggest";
-	static String yupiaoReqString = "http://dynamic.12306.cn/otsquery/query/queryRemanentTicketAction.do";
+	private static String loginString = "https://dynamic.12306.cn/otsweb/loginAction.do?method=login";
+	private static String loginAuthString = "https://dynamic.12306.cn/otsweb/loginAction.do?method=loginAysnSuggest";
+	private static String yupiaoReqString = "http://dynamic.12306.cn/otsquery/query/queryRemanentTicketAction.do";
 	public static String getOrderTokenString = "https://dynamic.12306.cn/otsweb/order/myOrderAction.do?method=init&showMessage=Y";
-	static String orderUnpaidUrl = "http://dynamic.12306.cn/otsweb/myOrderAction.do";
-	static String queryString ="https://dynamic.12306.cn/otsweb/order/querySingleAction.do";
-	static String bookString = "";
+	private static String orderUnpaidUrl = "http://dynamic.12306.cn/otsweb/myOrderAction.do";
+	private static String queryString ="https://dynamic.12306.cn/otsweb/order/querySingleAction.do";
+	private static String bookString = "https://dynamic.12306.cn/otsweb/order/querySingleAction.do?method=submutOrderRequest";
+	private static String bookCheckImgString ="https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=randp";
+	private static String f5bookCheckImgString = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=randp&"
+			+ Math.random();
+	private static String readPassagerString ="https://dynamic.12306.cn/otsweb/order/confirmPassengerAction.do?method=getpassengerJson";
 
 	public static ReqNetDate initModel(String action, Bundle mBundle) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		ReqNetDate reqNetDate = null;
@@ -38,51 +44,72 @@ public class InitModel {
 //		reqNetDate.setMethod(protocolString);
 //		reqNetDate.setUrl(urlString);
 //		reqNetDate.setProtocol(methodString);
-		if (action.equalsIgnoreCase(StringPoolUtil.GET_CHECK_IMG)) {
+		if (action.equals(StringPoolUtil.GET_CHECK_IMG)) {
 			reqNetDate = new ReqCheckImg();
 			reqNetDate.setMethod("GET");
 			reqNetDate.setUrl(getCheckImgString);
 			reqNetDate.setProtocol("https");
-		} else if (action.equalsIgnoreCase(StringPoolUtil.F5_CHECK_IMG)) {
+		} else if (action.equals(StringPoolUtil.F5_CHECK_IMG)) {
 			reqNetDate = new ReqCheckImg();
 			reqNetDate.setMethod("GET");
 			reqNetDate.setUrl(f5CheckImgString);
 			reqNetDate.setProtocol("https");
-		} else if (action.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN_AUTH)) {
+		} else if (action.equals(StringPoolUtil.SEND_LOGIN_AUTH)) {
 			reqNetDate = new ReqLoginToken();
 			reqNetDate.setMethod("POST");
 			reqNetDate.setUrl(loginAuthString);
 			reqNetDate.setProtocol("https");
-		} else if (action.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN)) {
+		} else if (action.equals(StringPoolUtil.SEND_LOGIN)) {
 			reqNetDate = new ReqLogin();
 			reqNetDate.setMethod("POST");
 			reqNetDate.setUrl(loginString);
 			reqNetDate.setProtocol("https");
-		} else if (action.equalsIgnoreCase(StringPoolUtil.CHECK_ORDER_UNPAID)) {
+		} else if (action.equals(StringPoolUtil.CHECK_ORDER_UNPAID)) {
 			reqNetDate = new ReqOrderUnpaid();
 			reqNetDate.setMethod("GET");
 			reqNetDate.setUrl(orderUnpaidUrl);
 			reqNetDate.setProtocol("https");
 		}
-		else if (action.equalsIgnoreCase(StringPoolUtil.GET_Order_TOKRN)) {
+		else if (action.equals(StringPoolUtil.GET_Order_TOKRN)) {
 			reqNetDate = new ReqToken();
 			reqNetDate.setMethod("GET");
 			reqNetDate.setProtocol("https");
 			reqNetDate.setUrl(getOrderTokenString);
 		}
-		else if(action.equalsIgnoreCase(StringPoolUtil.QUERY_TICKET))
+		else if(action.equals(StringPoolUtil.QUERY_TICKET))
 		{
 			reqNetDate = new ReqQuery();
 			reqNetDate.setMethod("GET");
 			reqNetDate.setProtocol("https");
 			reqNetDate.setUrl(queryString);
 		}
-		else if(action.equalsIgnoreCase(StringPoolUtil.QUERY_BOOK))
+		else if(action.equals(StringPoolUtil.QUERY_BOOK))
 		{
 			reqNetDate = new ReqBook();
-			reqNetDate.setMethod("PUT");
+			reqNetDate.setMethod("POST");
 			reqNetDate.setProtocol("https");
 			reqNetDate.setUrl(bookString);
+		}
+		else if(action.equals(StringPoolUtil.BOOK_IMG))
+		{
+			reqNetDate = new ReqBookCheckImg();
+			reqNetDate.setMethod("GET");
+			reqNetDate.setProtocol("https");
+			reqNetDate.setUrl(bookCheckImgString);
+		}
+		else if(action.equals(StringPoolUtil.F5_BOOK_IMG))
+		{
+			reqNetDate = new ReqBookCheckImg();
+			reqNetDate.setMethod("GET");
+			reqNetDate.setProtocol("https");
+			reqNetDate.setUrl(f5bookCheckImgString);
+		}
+		else if(action.equals(StringPoolUtil.READ_PASSAGER))
+		{
+			reqNetDate = new ReqPassager();
+			reqNetDate.setMethod("POST");
+			reqNetDate.setProtocol("https");
+			reqNetDate.setUrl(readPassagerString);
 		}
 		reqNetDate.initHeadParam();
 		reqNetDate.initParam(mBundle);
