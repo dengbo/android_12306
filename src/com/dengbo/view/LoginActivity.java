@@ -228,8 +228,8 @@ public class LoginActivity extends BaseActivity {
 						.equalsIgnoreCase(StringPoolUtil.SEND_LOGIN_AUTH)) {// 处理获取到autho后，发送请求登录信息
 					App.mIntent.setAction(StringPoolUtil.SEND_LOGIN);
 					String[] dataStrings = new String[4];
-					dataStrings[0] = "dengbodb@sina.com";//userEditText.getText().toString();
-					dataStrings[1] = "03170822l";//passwdEditText.getText().toString();
+					dataStrings[0] = userEditText.getText().toString();
+					dataStrings[1] = passwdEditText.getText().toString();
 					dataStrings[2] = checkEditText.getText().toString();
 					dataStrings[3] = mBundle
 							.getString(StringPoolUtil.LOGIN_RAND);
