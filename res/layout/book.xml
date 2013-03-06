@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -28,14 +33,15 @@
             android:layout_height="wrap_content"
             android:text="@string/book" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/white_frame"
-        android:orientation="vertical"
+        android:layout_height="212dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        >
+        android:background="@drawable/white_frame"
+        android:orientation="vertical" >
+
         <LinearLayout
             android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
@@ -99,7 +105,6 @@
         	android:layout_height="wrap_content"
         	android:orientation="horizontal"
         	android:layout_marginTop="10dp"
-        	android:layout_marginBottom="10dp"
         	android:layout_marginLeft="5dp"
         	android:layout_marginRight="5dp"
             >
@@ -111,7 +116,7 @@
 			<TextView
 			    android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
-        		android:layout_marginLeft="20dp"
+        		android:layout_marginLeft="40dp"
         		android:layout_weight="1"
         		android:id="@+id/book_time"
 			    />
@@ -158,10 +163,9 @@
         	android:layout_marginRight="5dp"
         	android:src="@drawable/line_black"
 		    />
-		 <LinearLayout
+		 <RelativeLayout
             android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
-        	android:orientation="horizontal"
         	android:layout_marginTop="10dp"
         	android:layout_marginBottom="10dp"
         	android:layout_marginLeft="5dp"
@@ -171,25 +175,31 @@
 		    	android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
         		android:text="@string/book_check"
+        		android:id="@+id/book_check_t"
 		   	 />
 			<EditText
                 android:id="@+id/book_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
+                android:layout_toRightOf="@id/book_check_t"
                 android:hint="@string/login_check_hint" />
 			 <ImageView
                 android:id="@+id/book_check_img"
                 android:layout_width="55dp"
                 android:visibility="gone"
+                android:layout_toRightOf="@id/book_check"
+                android:layout_alignBottom="@id/book_check"
                 android:layout_height="60dp" />
             <ProgressBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/book_check"
+                android:layout_alignBottom="@id/book_check"
                 style="?android:attr/progressBarStyleLarge"
                 android:id="@+id/book_bar"
                 />
-		</LinearLayout>
+		</RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -210,13 +220,14 @@
         	android:textSize="16sp"
             />
     </LinearLayout>
+
     <ListView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/book_passager"
-        android:background="@drawable/white_frame"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:layout_marginRight="15dp"
+        android:background="@drawable/white_frame" >
 
     </ListView>
     <Button
@@ -242,3 +253,4 @@
         android:text="@string/book_hint_2"
         />
 </LinearLayout>
+</ScrollView>

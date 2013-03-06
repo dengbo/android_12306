@@ -16,10 +16,13 @@ public interface StringPoolUtil {
 	String QUERY_TICKET = "com.dengbo.view.queryTicket";
 	String QUERY_BOOK = "com.dengbo.view.queryBook";
 	String SUB_BOOK ="com.dengbo.view.subBook";
+	String SUB_BOOK_1 ="com.dengbo.view.subBook_1";
+	String SUB_BOOK_2 ="com.dengbo.view.subBook_2";
 	String BOOK_IMG = "com.dengbo.view.bookImg";
 	String F5_BOOK_IMG = "com.dengbo.view.F5BookImg";
 	String ADD_PASSAGER = "com.dengbo.view.addPassager";
 	String READ_PASSAGER ="com.dengbo.view.readPassager";
+	String LOGOUT = "com.dengbo.view.logout";
 
 
 
@@ -83,4 +86,7 @@ public interface StringPoolUtil {
 
 	//book
 	String BOOK = "book";
+	String PASSENGER = "passenger";
+	String SUB_BOOKS = "sub_book";
+	String BOOK_RET = "book_ret";
 }

@@ -2,6 +2,8 @@ package com.dengbo.app;
 
 import java.util.HashMap;
 
+import org.json.JSONArray;
+
 import com.dengbo.control.InitModel;
 import com.dengbo.model.ReqCheckImg;
 import com.dengbo.model.ReqCookie;
@@ -22,6 +24,7 @@ public class App extends Application{
 //	public static HashMap<String, HashMap<String, String>> modelHashMap , parseHashMap;
 	// 启动主service的intent
 	public static Intent mIntent;
+	public static JSONArray array;
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub

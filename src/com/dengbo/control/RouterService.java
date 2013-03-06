@@ -82,7 +82,7 @@ public class RouterService extends Service {
 				outputStream = new Network().getInputStream(reqNetDate[0]);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				Log.e("rounterService", e.toString());
+				Log.e(TAG, e.toString());
 				mException = e;
 				return null;
 			}

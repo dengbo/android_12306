@@ -3,13 +3,16 @@ package com.dengbo.control;
 import android.os.Bundle;
 
 import com.dengbo.model.ReqBook;
+import com.dengbo.model.ReqBook1;
+import com.dengbo.model.ReqBookPre;
 import com.dengbo.model.ReqBookCheckImg;
 import com.dengbo.model.ReqCheckImg;
 import com.dengbo.model.ReqLogin;
 import com.dengbo.model.ReqLoginToken;
+import com.dengbo.model.ReqLogout;
 import com.dengbo.model.ReqNetDate;
 import com.dengbo.model.ReqOrderUnpaid;
-import com.dengbo.model.ReqPassager;
+import com.dengbo.model.ReqPassenger;
 import com.dengbo.model.ReqQuery;
 import com.dengbo.model.ReqToken;
 import com.dengbo.util.StringPoolUtil;
@@ -31,6 +34,9 @@ public class InitModel {
 	private static String f5bookCheckImgString = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=randp&"
 			+ Math.random();
 	private static String readPassagerString ="https://dynamic.12306.cn/otsweb/order/confirmPassengerAction.do?method=getpassengerJson";
+	private static String bookString1 = "https://dynamic.12306.cn/otsweb/order/confirmPassengerAction.do";
+	private static String bookString2 ="https://dynamic.12306.cn/otsweb/order/confirmPassengerAction.do?method=confirmSingleForQueue";
+	private static String logoutString = "https://dynamic.12306.cn/otsweb/loginAction.do?method=logout";
 
 	public static ReqNetDate initModel(String action, Bundle mBundle) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		ReqNetDate reqNetDate = null;
@@ -85,7 +91,7 @@ public class InitModel {
 		}
 		else if(action.equals(StringPoolUtil.QUERY_BOOK))
 		{
-			reqNetDate = new ReqBook();
+			reqNetDate = new ReqBookPre();
 			reqNetDate.setMethod("POST");
 			reqNetDate.setProtocol("https");
 			reqNetDate.setUrl(bookString);
@@ -106,10 +112,37 @@ public class InitModel {
 		}
 		else if(action.equals(StringPoolUtil.READ_PASSAGER))
 		{
-			reqNetDate = new ReqPassager();
+			reqNetDate = new ReqPassenger();
 			reqNetDate.setMethod("POST");
 			reqNetDate.setProtocol("https");
 			reqNetDate.setUrl(readPassagerString);
+		}
+		else if(action.equals(StringPoolUtil.SUB_BOOK_1))
+		{
+			reqNetDate = new ReqBook1();
+			reqNetDate.setMethod("GET");
+			reqNetDate.setProtocol("https");
+			reqNetDate.setUrl(bookString1);
+		}
+		else if(action.equals(StringPoolUtil.SUB_BOOK_2))
+		{
+			reqNetDate = new ReqBook1();
+			reqNetDate.setMethod("POST");
+			reqNetDate.setProtocol("https");
+			reqNetDate.setUrl(bookString2);
+		}
+		else if(action.equals(StringPoolUtil.SUB_BOOK))
+		{
+			reqNetDate = new ReqBook();
+			reqNetDate.setMethod("POST");
+			reqNetDate.setProtocol("https");
+		}
+		else if(action.equals(StringPoolUtil.LOGOUT))
+		{
+			reqNetDate = new ReqLogout();
+			reqNetDate.setMethod("GET");
+			reqNetDate.setProtocol("https");
+			reqNetDate.setUrl(logoutString);
 		}
 		reqNetDate.initHeadParam();
 		reqNetDate.initParam(mBundle);

@@ -194,6 +194,8 @@ public class Network {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
+//			String errorString = CommonUtil.inputStreamToString(connection.getErrorStream());
+//			Log.v(TAG,errorString);
 			connection.disconnect();
 		}
 		return outputStream;

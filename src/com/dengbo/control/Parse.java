@@ -9,10 +9,10 @@ import android.os.Bundle;
 public class Parse {
 	public Bundle parseStream(String actionString , ByteArrayOutputStream stream) throws Exception
 	{
-		if (actionString.equals(StringPoolUtil.GET_CHECK_IMG) | actionString.equals(StringPoolUtil.BOOK_IMG)) {
+		if (actionString.equals(StringPoolUtil.GET_CHECK_IMG) || actionString.equals(StringPoolUtil.BOOK_IMG)) {
 			return new ParseCheckImg().parse(stream);
 		}
-		else if (actionString.equals(StringPoolUtil.F5_CHECK_IMG) | actionString.equals(StringPoolUtil.F5_BOOK_IMG)) {
+		else if (actionString.equals(StringPoolUtil.F5_CHECK_IMG) || actionString.equals(StringPoolUtil.F5_BOOK_IMG)) {
 			return new ParseCheckImg().parse(stream);
 		}
 		else if (actionString.equals(StringPoolUtil.SEND_LOGIN_AUTH)) {
@@ -33,8 +33,21 @@ public class Parse {
 		}
 		else if(actionString.equals(StringPoolUtil.QUERY_BOOK))
 		{
-			return new ParseBook(stream).parse(stream);
+			return new ParseBookPre(stream).parse(stream);
 		}
+		else if(actionString.equals(StringPoolUtil.READ_PASSAGER))
+		{
+			return new ParsePassenger().parse(stream);
+		}
+		else if(actionString.equals(StringPoolUtil.SUB_BOOK) || actionString.equals(StringPoolUtil.SUB_BOOK_2))
+		{
+			return new ParseBook().parse(stream);
+		}
+		else if(actionString.equals(StringPoolUtil.SUB_BOOK_1))
+		{
+			return new ParseBook1().parse(stream);
+		}
+
 		return null;
 	}
 }

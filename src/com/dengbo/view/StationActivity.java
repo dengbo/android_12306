@@ -49,7 +49,7 @@ public class StationActivity extends BaseActivity{
 				else {//目的地
 					StationActivity.this.setResult(QueryActivity.END, mIntent);
 				}
-
+				StationActivity.this.finish();
 			}
 		});
 	}

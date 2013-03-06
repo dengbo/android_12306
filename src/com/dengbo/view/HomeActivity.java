@@ -13,10 +13,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class HomeActivity extends BaseActivity {
 
+	private Button logoutButton ;
 	// 从第一条到最后一条顺序命名，每一条是一个layout
 	private LinearLayout l1, l2, l3, l4, l5, l6, l7, l8, l9, l10;
 
@@ -27,6 +29,7 @@ public class HomeActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
+		logoutButton = (Button) findViewById(R.id.logout);
 		l1 = (LinearLayout) findViewById(R.id.home_1);
 		l2 = (LinearLayout) findViewById(R.id.home_2);
 		l3 = (LinearLayout) findViewById(R.id.home_3);
@@ -38,6 +41,7 @@ public class HomeActivity extends BaseActivity {
 		l9 = (LinearLayout) findViewById(R.id.home_9);
 		l10 = (LinearLayout) findViewById(R.id.home_10);
 
+		logoutButton.setOnClickListener(logoutClickListener);
 		l1.setOnClickListener(home_1_listener);
 		l2.setOnClickListener(home_2_listener);
 		l3.setOnClickListener(home_3_listener);
@@ -55,6 +59,21 @@ public class HomeActivity extends BaseActivity {
 		mDatareciever = new Datareciever();
 		registerReceiver(mDatareciever, filter);
 	}
+
+	//logout
+	private OnClickListener logoutClickListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent mIntent = App.mIntent;
+			mIntent.setAction(StringPoolUtil.LOGOUT);
+			startService(mIntent);
+			Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+			startActivity(intent);
+			HomeActivity.this.finish();
+		}
+	};
 
 	// 我的资料
 	private OnClickListener home_1_listener = new OnClickListener() {

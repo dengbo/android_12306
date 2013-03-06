@@ -30,6 +30,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
@@ -41,6 +42,7 @@ public class QueryActivity extends BaseActivity {
 	public static final int END = 2;
 
 	private Button backButton, queryButton;
+	private ImageButton changeButton;
 	private TextView query_dateTextView, query_timeTextView,
 			query_kindTextView, query_classTextView;
 	private TextView query_startTextView, query_endTextView;
@@ -69,6 +71,7 @@ public class QueryActivity extends BaseActivity {
 
 		backButton = (Button) findViewById(R.id.back);
 		queryButton = (Button) findViewById(R.id.query);
+		changeButton =(ImageButton) findViewById(R.id.query_change);
 		query_startTextView = (TextView) findViewById(R.id.query_start);
 		query_endTextView = (TextView) findViewById(R.id.query_end);
 		query_dateTextView = (TextView) findViewById(R.id.query_date);
@@ -81,6 +84,7 @@ public class QueryActivity extends BaseActivity {
 
 	private void init() {
 		parent = lay.inflate(R.layout.query, null);
+		changeButton.setOnClickListener(changeClickListener);
 		backButton.setOnClickListener(backClickListener);
 		queryButton.setOnClickListener(queryClickListener);
 		Resources resources = getResources();
@@ -102,7 +106,7 @@ public class QueryActivity extends BaseActivity {
 
 		startString = "BJP";
 		endString = "WHN";
-		kindBuilder = new StringBuilder("QB");
+		kindBuilder = new StringBuilder("QB%23D%23Z%23T%23K%23QT%23");
 
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(StringPoolUtil.QUERY_TICKET);
@@ -110,6 +114,18 @@ public class QueryActivity extends BaseActivity {
 		registerReceiver(dataRecieve, filter);
 	}
 
+	//调换出发地和目的地的名称
+	private OnClickListener changeClickListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			String start = query_startTextView.getText().toString();
+			String end = query_endTextView.getText().toString();
+			query_startTextView.setText(end);
+			query_endTextView.setText(start);
+		}
+	};
 	//修改出发地
 	private OnClickListener mod_startClickListener = new OnClickListener() {
 
@@ -227,12 +243,18 @@ public class QueryActivity extends BaseActivity {
 					StringBuilder dataBuilder = new StringBuilder();
 					kindBuilder = new StringBuilder();
 					List<Boolean> mList = mAdapter.mChecked;
+					boolean isCheck = false;
 					for (int i = 0; i < mList.size(); i++) {
 						if (mList.get(i)) {
+							isCheck = true;
 							kindBuilder.append(query_kindStrings_l[i]);
 							kindBuilder.append("#");
 							dataBuilder.append(queryArrayList.get(i)).append(",");
 						}
+					}
+					if(!isCheck)
+					{
+						dataBuilder.append(query_kindStrings[0]);
 					}
 					((TextView) thisViews).setText(dataBuilder.toString());
 					mTimeWindow.dismiss();

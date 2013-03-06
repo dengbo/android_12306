@@ -9,6 +9,7 @@ import com.dengbo.util.NotifyExceptionUtil;
 import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.IBinder;
 
 public class InitCookieService extends Service{
@@ -41,6 +42,8 @@ public class InitCookieService extends Service{
 			try {
 				CommonUtil.COOKIE = new Network().getCookieString(params[0]);
 				Intent mIntent = new Intent();
+				Bundle mBundle = new Bundle();
+				mIntent.putExtra("notUsed", mBundle);
 				mIntent.setAction(actionString);
 				sendBroadcast(mIntent);
 			} catch (Exception e) {

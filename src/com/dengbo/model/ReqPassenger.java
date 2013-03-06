@@ -2,7 +2,7 @@ package com.dengbo.model;
 
 import android.os.Bundle;
 
-public class ReqPassager extends ReqNetDate{
+public class ReqPassenger extends ReqNetDate{
 
 	@Override
 	public void initHeadParam() {

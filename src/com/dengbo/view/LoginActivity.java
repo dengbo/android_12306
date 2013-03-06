@@ -285,25 +285,26 @@ public class LoginActivity extends BaseActivity {
 					App.mIntent = new Intent(LoginActivity.this, RouterService.class);
 					App.mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
 					startService(App.mIntent);
-				} else if (action
-						.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
-					Log.d("mark", "网络状态已经改变");
-					connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-					info = connectivityManager.getActiveNetworkInfo();
-					if (info != null && info.isAvailable()) {
-						cookieIntent = new Intent(LoginActivity.this,
-								InitCookieService.class);
-						cookieIntent.setAction(StringPoolUtil.GET_COOKIE);
-						startService(cookieIntent);
-						// 获取验证码
-						App.mIntent = new Intent(LoginActivity.this,
-								RouterService.class);
-						App.mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
-						startService(App.mIntent);
-						String name = info.getTypeName();
-						Log.d("mark", "当前网络名称：" + name);
-					}
 				}
+//				} else if (action
+//						.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
+//					Log.d("mark", "网络状态已经改变");
+//					connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+//					info = connectivityManager.getActiveNetworkInfo();
+//					if (info != null && info.isAvailable()) {
+//						cookieIntent = new Intent(LoginActivity.this,
+//								InitCookieService.class);
+//						cookieIntent.setAction(StringPoolUtil.GET_COOKIE);
+//						startService(cookieIntent);
+//						// 获取验证码
+//						App.mIntent = new Intent(LoginActivity.this,
+//								RouterService.class);
+//						App.mIntent.setAction(StringPoolUtil.GET_CHECK_IMG);
+//						startService(App.mIntent);
+//						String name = info.getTypeName();
+//						Log.d("mark", "当前网络名称：" + name);
+//					}
+//				}
 			}
 
 		}
