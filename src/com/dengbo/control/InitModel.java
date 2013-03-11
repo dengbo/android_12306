@@ -37,6 +37,8 @@ public class InitModel {
 	private static String bookString1 = "https://dynamic.12306.cn/otsweb/order/confirmPassengerAction.do";
 	private static String bookString2 ="https://dynamic.12306.cn/otsweb/order/confirmPassengerAction.do?method=confirmSingleForQueue";
 	private static String logoutString = "https://dynamic.12306.cn/otsweb/loginAction.do?method=logout";
+	static String regCheckImg = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=rrand";
+	static String regF5CheckImg = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=rrand&"+Math.random();
 
 	public static ReqNetDate initModel(String action, Bundle mBundle) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		ReqNetDate reqNetDate = null;
@@ -89,6 +91,20 @@ public class InitModel {
 			reqNetDate.setProtocol("https");
 			reqNetDate.setUrl(queryString);
 		}
+
+		else if(action.equalsIgnoreCase(StringPoolUtil.REG_CHECK_IMG)){
+			reqNetDate = new ReqCheckImg();
+			reqNetDate.setMethod("GET");
+			reqNetDate.setUrl(regCheckImg);
+			reqNetDate.setProtocol("https");
+		}
+		else if(action.equalsIgnoreCase(StringPoolUtil.REG_F5_CHECK_IMG)){
+			reqNetDate = new ReqCheckImg();
+			reqNetDate.setMethod("GET");
+			reqNetDate.setUrl(regF5CheckImg);
+			reqNetDate.setProtocol("https");
+		}
+
 		else if(action.equals(StringPoolUtil.QUERY_BOOK))
 		{
 			reqNetDate = new ReqBookPre();
@@ -144,6 +160,7 @@ public class InitModel {
 			reqNetDate.setProtocol("https");
 			reqNetDate.setUrl(logoutString);
 		}
+
 		reqNetDate.initHeadParam();
 		reqNetDate.initParam(mBundle);
 		reqNetDate.setAction(action);

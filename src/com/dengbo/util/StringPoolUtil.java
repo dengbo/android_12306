@@ -14,6 +14,10 @@ public interface StringPoolUtil {
 	String CHECK_ORDER_UNPAID = "com.dengbo.view.checkOrderUnpaid";
 	String GET_Order_TOKRN = "com.dengbo.view.getOrderToken";
 	String QUERY_TICKET = "com.dengbo.view.queryTicket";
+	
+	String REG_CHECK_IMG = "com.dengbo.view.regCheckImg";   //注册验证码
+	String REG_F5_CHECK_IMG = "com.dengbo.view.regRefreshCheckImg";  //注册刷新验证码
+	
 	String QUERY_BOOK = "com.dengbo.view.queryBook";
 	String SUB_BOOK ="com.dengbo.view.subBook";
 	String SUB_BOOK_1 ="com.dengbo.view.subBook_1";

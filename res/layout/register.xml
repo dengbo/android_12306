@@ -263,7 +263,7 @@
                         android:layout_height="@dimen/reg_editext_height"
                         android:layout_alignParentRight="true"
                         android:clickable="true"
-                        android:src="@drawable/logo" />
+                        />
 
                     <EditText
                         android:layout_width="fill_parent"
@@ -472,7 +472,7 @@
                         android:layout_height="@dimen/reg_editext_height"
                         android:background="@drawable/select"
                         android:gravity="right|center_vertical"
-                        android:text="" />
+                        android:text="1970-01-01" />
                 </LinearLayout>
 
                 <View
@@ -491,13 +491,12 @@
                         android:layout_height="wrap_content"
                         android:text="@string/reg_certificate_type" />
 
-                    <Button
-                        android:id="@+id/btn_reg_card_type"
+                    <Spinner
+                        android:id="@+id/spinner_reg_card_type"
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/reg_editext_height"
-                        android:background="@drawable/select"
                         android:gravity="right|center_vertical"
-                        android:text="身份证" />
+                         />
                 </LinearLayout>
 
                 <View
@@ -531,6 +530,7 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal" >
 
                     <TextView
@@ -539,13 +539,12 @@
                         android:layout_height="wrap_content"
                         android:text="@string/reg_passenger_type" />
 
-                    <Button
-                        android:id="@+id/btn_reg_"
+                    <Spinner
+                        android:id="@+id/spinner_reg_passenger_type"
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/reg_editext_height"
-                        android:background="@drawable/select"
                         android:gravity="right|center_vertical"
-                        android:text="成人票" />
+                         />
                 </LinearLayout>
                 <View
                     android:layout_width="fill_parent"

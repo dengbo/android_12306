@@ -30,6 +30,10 @@ public class Parse {
 		else if(actionString.equals(StringPoolUtil.QUERY_TICKET))
 		{
 			return new ParseQuery().parse(stream);
+		}else if(actionString.equalsIgnoreCase(StringPoolUtil.REG_CHECK_IMG)){
+			return new ParseCheckImg().parse(stream);
+		}else if(actionString.equalsIgnoreCase(StringPoolUtil.REG_F5_CHECK_IMG)){
+			return new ParseCheckImg().parse(stream);
 		}
 		else if(actionString.equals(StringPoolUtil.QUERY_BOOK))
 		{
