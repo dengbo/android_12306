@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="card_type">
+        <item>二代身份证</item>
+        <item>一代身份证</item>
+        <item>港澳身份证</item>
+        <item>台湾身份证</item>
+        <item >护照</item>
+    </string-array>
+    
+    <string-array name="str_passenger_type">
+        <item >成人</item>
+        <item >儿童</item>
+        <item >伤残军人</item>
+    </string-array>
+
+</resources>
